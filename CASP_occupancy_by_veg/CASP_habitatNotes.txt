@@ -1,0 +1,24 @@
+- elevation
+- (extended analysis) neighbors
+- presence/absence
+- moderate/strong
+- graded response (standard rubric for songbird agression?)
+
+- (extended analysis) other species detected during PCs
+
+- model analysis (AIC)
+- NOTE: Black Mesa had fence along northern row (within 20m)
+
+- literature for territory size and prior veg survey examples for analysis
+
+- density of CASP from PCs. Index of agression (is it related to density?). Regress agressive response by density at site.
+
+- need to check if density needs to be corrected
+
+Protocol:
+- playback - song then immediate agressive call - 30s obs 
+- speaker held along transect (E-W) at full volume (held above head at XXm)
+- notes of agressive behaviors
+- point counts were conducted AFTER the playback
+
+- veg plots assoc. w/ most agressive or spread out areas of absence
