@@ -1,0 +1,419 @@
+Date,Observer,Location,Point ,Presence,Direction,Height,Yucca,Sage,Sandplum,Cholla,Tree,Other shrub,Notes
+07/18/14,Josh and Roy,Black Mesa,C1,Y,NW,>1m,16,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,C1,Y,NW,<1m ,19,0,0,2,0,0,
+07/18/14,Josh and Roy,Black Mesa,C1,Y,SE,>1m,24,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,C1,Y,SE,<1m ,31,0,0,1,0,0,
+07/18/14,Josh and Roy,Black Mesa,A1,N,NW,>1m,16,0,0,0,1,0,"Wire fence running E to W 1m tall, Juniper 2m"
+07/18/14,Josh and Roy,Black Mesa,A1,N,NW,<1m ,14,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,A1,N,SE,>1m,4,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,A1,N,SE,<1m ,9,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,A2,Y,NE,>1m,5,0,0,2,0,0,
+07/18/14,Josh and Roy,Black Mesa,A2,Y,NE,<1m ,34,0,0,2,0,0,
+07/18/14,Josh and Roy,Black Mesa,A2,Y,SW,>1m,6,0,0,2,0,2,
+07/18/14,Josh and Roy,Black Mesa,A2,Y,SW,<1m ,21,0,0,2,0,0,
+07/18/14,Josh and Roy,Black Mesa,A4,N,NW,>1m,12,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,A4,N,NW,<1m ,41,0,0,1,0,0,
+07/18/14,Josh and Roy,Black Mesa,A4,N,SE,>1m,2,0,0,2,1,0,Juniper 
+07/18/14,Josh and Roy,Black Mesa,A4,N,SE,<1m ,18,0,0,0,0,1,
+07/18/14,Josh and Roy,Black Mesa,A6,N,NW,>1m,31,0,0,0,0,1,
+07/18/14,Josh and Roy,Black Mesa,A6,N,NW,<1m ,39,0,0,3,0,0,
+07/18/14,Josh and Roy,Black Mesa,A6,N,SE,>1m,9,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,A6,N,SE,<1m ,19,0,0,2,0,0,
+07/18/14,Josh and Roy,Black Mesa,A8,Y,NW,>1m,5,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,A8,Y,NW,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,A8,Y,SE,>1m,11,0,0,0,0,3,
+07/18/14,Josh and Roy,Black Mesa,A8,Y,SE,<1m ,22,0,0,3,0,1,Woody stalk
+07/18/14,Josh and Roy,Black Mesa,A9,Y,NW,>1m,13,0,0,4,0,0,
+07/18/14,Josh and Roy,Black Mesa,A9,Y,NW,<1m ,12,0,0,3,0,0,
+07/18/14,Josh and Roy,Black Mesa,A9,Y,SE,>1m,13,0,0,0,0,1,
+07/18/14,Josh and Roy,Black Mesa,A9,Y,SE,<1m ,8,0,0,1,0,0,
+07/18/14,Josh and Roy,Black Mesa,C11,N,NE,>1m,0,0,0,0,1,3,"Woody stalk, Juniper"
+07/18/14,Josh and Roy,Black Mesa,C11,N,NE,<1m ,8,0,0,0,0,1,
+07/18/14,Josh and Roy,Black Mesa,C11,N,SW,>1m,0,0,0,0,1,0,Juniper 5m
+07/18/14,Josh and Roy,Black Mesa,C11,N,SW,<1m ,6,0,0,1,0,0,
+07/18/14,Josh and Roy,Black Mesa,D9,Y,NW,>1m,16,0,0,4,0,1,
+07/18/14,Josh and Roy,Black Mesa,D9,Y,NW,<1m ,39,0,0,6,0,4,
+07/18/14,Josh and Roy,Black Mesa,D9,Y,SE,>1m,17,0,0,3,0,6,
+07/18/14,Josh and Roy,Black Mesa,D9,Y,SE,<1m ,17,0,0,4,0,4,
+07/18/14,Josh and Roy,Black Mesa,B9,N,NE,>1m,13,0,0,1,0,0,
+07/18/14,Josh and Roy,Black Mesa,B9,N,NE,<1m ,24,0,0,8,0,0,
+07/18/14,Josh and Roy,Black Mesa,B9,N,SW,>1m,9,0,0,0,0,2,
+07/18/14,Josh and Roy,Black Mesa,B9,N,SW,<1m ,19,0,0,3,0,1,
+07/18/14,Josh and Roy,Black Mesa,B8,Y,NW,>1m,10,0,0,3,0,0,
+07/18/14,Josh and Roy,Black Mesa,B8,Y,NW,<1m ,21,0,0,5,0,1,
+07/18/14,Josh and Roy,Black Mesa,B8,Y,SE,>1m,10,0,0,1,0,2,
+07/18/14,Josh and Roy,Black Mesa,B8,Y,SE,<1m ,12,0,0,9,0,0,
+07/18/14,Josh and Roy,Black Mesa,C6,N,NE,>1m,0,0,0,4,1,1,Juniper 3m
+07/18/14,Josh and Roy,Black Mesa,C6,N,NE,<1m ,0,0,0,4,0,0,
+07/18/14,Josh and Roy,Black Mesa,C6,N,SW,>1m,0,0,0,0,1,0,Juniper
+07/18/14,Josh and Roy,Black Mesa,C6,N,SW,<1m ,0,0,0,9,1,9,"Catsclaw Acacia, Aromatic Sumac, Juniper"
+07/18/14,Josh and Roy,Black Mesa,D6,N,NW,>1m,0,0,0,0,0,2,
+07/18/14,Josh and Roy,Black Mesa,D6,N,NW,<1m ,3,0,0,0,0,14,Catsclaw Acacia
+07/18/14,Josh and Roy,Black Mesa,D6,N,SE,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Black Mesa,D6,N,SE,<1m ,5,0,0,2,0,15,Catsclaw Acacia
+07/18/14,Josh and Roy,Black Mesa,D3,N,NE,>1m,0,0,0,0,0,1,
+07/18/14,Josh and Roy,Black Mesa,D3,N,NE,<1m ,3,0,0,0,0,7,
+07/18/14,Josh and Roy,Black Mesa,D3,N,SW,>1m,0,0,0,0,1,3,Juniper 2.5m
+07/18/14,Josh and Roy,Black Mesa,D3,N,SW,<1m ,7,0,0,0,0,7,
+07/19/14,Josh and Roy,Cimarron Hills,B2,N,NE,>1m,0,1,0,0,0,0,"Mostly sage, unknown forb, bare ground"
+07/19/14,Josh and Roy,Cimarron Hills,B2,N,NE,<1m ,0,43,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,B2,N,SW,>1m,0,5,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,B2,N,SW,<1m ,0,45,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,A3,Y,NW,>1m,0,1,0,0,0,0,"Mostly sage, unknown forb, bare ground"
+07/19/14,Josh and Roy,Cimarron Hills,A3,Y,NW,<1m ,0,16,13,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,A3,Y,SE,>1m,0,1,0,0,0,3,Woody stalk
+07/19/14,Josh and Roy,Cimarron Hills,A3,Y,SE,<1m ,0,13,0,0,0,5,Woody stalk
+07/19/14,Josh and Roy,Cimarron Hills,A6,N,NW,>1m,0,13,0,0,0,0,"Mostly sage, unknown forb, bare ground"
+07/19/14,Josh and Roy,Cimarron Hills,A6,N,NW,<1m ,0,17,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,A6,N,SE,>1m,0,7,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,A6,N,SE,<1m ,0,27,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,B8,Y,NW,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,B8,Y,NW,<1m ,0,12,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,B8,Y,SE,>1m,0,0,0,0,0,0,SW covered in unknown forb 1.5m tall
+07/19/14,Josh and Roy,Cimarron Hills,B8,Y,SE,<1m ,0,6,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D6,N,NE,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D6,N,NE,<1m ,0,7,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D6,N,SW,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D6,N,SW,<1m ,0,4,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,C5,Y,NW,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,C5,Y,NW,<1m ,0,15,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,C5,Y,SE,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,C5,Y,SE,<1m ,0,22,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D3,Y,NW,>1m,0,5,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D3,Y,NW,<1m ,0,26,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D3,Y,SE,>1m,0,2,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D3,Y,SE,<1m ,0,15,12,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,H3,N,NW,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,H3,N,NW,<1m ,0,22,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,H3,N,SE,>1m,0,0,13,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,H3,N,SE,<1m ,0,7,0,0,0,15,
+07/19/14,Josh and Roy,Cimarron Hills,G1,N,NE,>1m,0,4,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,G1,N,NE,<1m ,0,49,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,G1,N,SW,>1m,0,2,8,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,G1,N,SW,<1m ,0,29,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D1,Y,NW,>1m,0,1,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D1,Y,NW,<1m ,0,43,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D1,Y,SE,>1m,0,4,0,0,0,0,
+07/19/14,Josh and Roy,Cimarron Hills,D1,Y,SE,<1m ,0,34,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A1,N,NW,>1m,0,0,0,0,0,1,
+07/18/14,Josh and Roy,Compound,A1,N,NW,<1m ,0,0,0,0,0,19,
+07/18/14,Josh and Roy,Compound,A1,N,SE,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A1,N,SE,<1m ,0,0,0,0,0,17,
+07/18/14,Josh and Roy,Compound,A4,N,NW,>1m,0,0,0,0,0,0,Covered in .5-.75m forb
+07/18/14,Josh and Roy,Compound,A4,N,NW,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A4,N,SE,>1m,2,0,0,0,0,0,Covered in .5-.75m forb
+07/18/14,Josh and Roy,Compound,A4,N,SE,<1m ,7,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A5,Y,NW,>1m,1,0,0,0,0,0,Covered in .5m forb
+07/18/14,Josh and Roy,Compound,A5,Y,NW,<1m ,4,1,0,0,0,1,
+07/18/14,Josh and Roy,Compound,A5,Y,SE,>1m,17,0,0,0,0,0,Covered in .5m forb
+07/18/14,Josh and Roy,Compound,A5,Y,SE,<1m ,24,15,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A6,Y,NW,>1m,6,0,0,0,0,0,Covered in .5m forb and grass
+07/18/14,Josh and Roy,Compound,A6,Y,NW,<1m ,8,2,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A6,Y,SE,>1m,2,10,10,0,0,0,Covered in .5m forb and grass
+07/18/14,Josh and Roy,Compound,A6,Y,SE,<1m ,3,0,10,0,0,0,
+07/18/14,Josh and Roy,Compound,A7,Y,NW,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A7,Y,NW,<1m ,1,7,5,0,0,0,
+07/18/14,Josh and Roy,Compound,A7,Y,SE,>1m,2,3,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A7,Y,SE,<1m ,2,5,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A8,N,NW,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A8,N,NW,<1m ,0,14,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A8,N,SE,>1m,3,8,0,0,0,0,
+07/18/14,Josh and Roy,Compound,A8,N,SE,<1m ,9,16,0,0,0,0,
+07/18/14,Josh and Roy,Compound,B4,Y,NE,>1m,9,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,B4,Y,NE,<1m ,8,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,B4,Y,SW,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,B4,Y,SW,<1m ,4,0,0,0,0,54,
+07/18/14,Josh and Roy,Compound,C4,N,NW,>1m,5,1,0,0,0,0,
+07/18/14,Josh and Roy,Compound,C4,N,NW,<1m ,13,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,C4,N,SE,>1m,28,2,0,0,0,0,
+07/18/14,Josh and Roy,Compound,C4,N,SE,<1m ,46,39,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D1,N,NE,>1m,0,0,0,0,0,4,
+07/18/14,Josh and Roy,Compound,D1,N,NE,<1m ,0,0,0,0,0,59,
+07/18/14,Josh and Roy,Compound,D1,N,SW,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D1,N,SW,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D3,Y,NW,>1m,11,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D3,Y,NW,<1m ,13,2,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D3,Y,SE,>1m,10,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D3,Y,SE,<1m ,12,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D4,Y,NW,>1m,59,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D4,Y,NW,<1m ,48,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D4,Y,SE,>1m,29,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D4,Y,SE,<1m ,25,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D5,Y,NE,>1m,9,1,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D5,Y,NE,<1m ,2,9,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D5,Y,SW,>1m,3,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D5,Y,SW,<1m ,2,26,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D8,N,NE,>1m,3,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D8,N,NE,<1m ,3,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D8,N,SW,>1m,2,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,D8,N,SW,<1m ,2,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,E4,Y,NW,>1m,16,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,E4,Y,NW,<1m ,18,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,E4,Y,SE,>1m,5,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,E4,Y,SE,<1m ,5,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F4,Y,NE,>1m,26,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F4,Y,NE,<1m ,38,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F4,Y,SW,>1m,5,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F4,Y,SW,<1m ,10,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F6,N,NE,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F6,N,NE,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F6,N,SW,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,F6,N,SW,<1m ,0,1,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H8,N,NE,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H8,N,NE,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H8,N,SW,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H8,N,SW,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H6,N,N/A,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H6,N,N/A,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H6,N,N/A,>1m,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H6,N,N/A,<1m ,0,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H4,N,NE,>1m,21,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H4,N,NE,<1m ,32,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H4,N,SW,>1m,13,0,0,0,0,0,
+07/18/14,Josh and Roy,Compound,H4,N,SW,<1m ,11,0,0,0,0,0,
+07/15/14,Josh and Roy,Optima,A1,N,n/a ,>1m,81,0,0,0,2,4,"Trees: lacebark elm <18m tall, 3-5m crown diamter"
+07/15/14,Josh and Roy,Optima,A1,N,n/a ,<1m ,180,0,0,0,0,26,"Aromatic Sumac (1), Catsclaw Acacia (3)"
+07/15/14,Josh and Roy,Optima,A4,N,n/a ,>1m,185,0,3,0,0,3,
+07/15/14,Josh and Roy,Optima,A4,N,n/a ,<1m ,135,0,0,0,0,0,
+07/15/14,Josh and Roy,Optima,A7,N,n/a ,>1m,476,4,0,0,0,0,
+07/15/14,Josh and Roy,Optima,A7,N,n/a ,<1m ,315,13,0,0,0,0,
+07/15/14,Josh and Roy,Optima,A8,Y,n/a ,>1m,57,1,0,0,0,0,
+07/15/14,Josh and Roy,Optima,A8,Y,n/a ,<1m ,33,0,0,0,0,0,
+07/15/14,Josh and Roy,Optima,B4,Y,n/a ,>1m,215,0,0,0,0,1,
+07/15/14,Josh and Roy,Optima,B4,Y,n/a ,<1m ,180,0,0,0,0,31,
+07/16/14,Josh and Roy,Optima,C3,N,NW,>1m,3,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,C3,N,NW,<1m ,18,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,C3,N,SE,>1m,9,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,C3,N,SE,<1m ,19,0,0,0,0,9,Catsclaw Acacia 
+07/16/14,Josh and Roy,Optima,D1,N,NE,>1m,21,0,0,0,0,1,Aromatic Sumac
+07/16/14,Josh and Roy,Optima,D1,N,NE,<1m ,22,0,0,0,0,3,Aromatic Sumac
+07/16/14,Josh and Roy,Optima,D1,N,SW,>1m,22,0,0,0,0,1,Aromatic Sumac
+07/16/14,Josh and Roy,Optima,D1,N,SW,<1m ,14,0,0,0,0,3,"Aromatic Sumac, Catclaw Acacia, Unknown Forb"
+07/16/14,Josh and Roy,Optima,D5,Y,NE,>1m,24,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,D5,Y,NE,<1m ,32,0,0,0,0,3,Catsclaw Acacia 
+07/16/14,Josh and Roy,Optima,D5,Y,SW,>1m,37,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,D5,Y,SW,<1m ,13,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,D7,N,NW,>1m,31,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,D7,N,NW,<1m ,18,17,0,0,0,0,
+07/16/14,Josh and Roy,Optima,D7,N,SE,>1m,17,0,0,0,0,2,
+07/16/14,Josh and Roy,Optima,D7,N,SE,<1m ,5,22,0,0,0,0,
+07/16/14,Josh and Roy,Optima,D8,Y,NE,>1m,95,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,D8,Y,NE,<1m ,16,0,0,0,0,4,
+07/16/14,Josh and Roy,Optima,D8,Y,SW,>1m,74,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,D8,Y,SW,<1m ,55,0,0,0,0,2,
+07/16/14,Josh and Roy,Optima,E8,Y,NE,>1m,86,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,E8,Y,NE,<1m ,29,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,E8,Y,SW,>1m,76,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,E8,Y,SW,<1m ,29,0,0,0,0,4,
+07/16/14,Josh and Roy,Optima,E4,N,NW,>1m,23,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,E4,N,NW,<1m ,25,0,0,0,0,2,
+07/16/14,Josh and Roy,Optima,E4,N,SE,>1m,75,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,E4,N,SE,<1m ,58,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,F2,Y,NW,>1m,0,0,0,0,0,0,Barbwire chainlink fence 4m tall
+07/16/14,Josh and Roy,Optima,F2,Y,NW,<1m ,8,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,F2,Y,SE,>1m,6,0,0,0,0,0,White pole 2m tall
+07/16/14,Josh and Roy,Optima,F2,Y,SE,<1m ,4,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G1,N,NW,>1m,15,0,0,0,0,2,Aromatic Sumac
+07/16/14,Josh and Roy,Optima,G1,N,NW,<1m ,7,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,G1,N,SE,>1m,4,0,0,0,0,1,10x10m triangle of Aromatic Sumac
+07/16/14,Josh and Roy,Optima,G1,N,SE,<1m ,9,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,G2,Y,NE,>1m,64,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G2,Y,NE,<1m ,22,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G2,Y,SW,>1m,32,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G2,Y,SW,<1m ,7,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G3,Y,NE,>1m,25,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G3,Y,NE,<1m ,9,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,G3,Y,SW,>1m,5,0,0,0,0,0,"Road cuts through, runs N to S"
+07/16/14,Josh and Roy,Optima,G3,Y,SW,<1m ,6,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G4,N,NW,>1m,53,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G4,N,NW,<1m ,38,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G4,N,SE,>1m,13,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G4,N,SE,<1m ,7,0,0,0,0,3,
+07/16/14,Josh and Roy,Optima,G7,N,NW,>1m,64,0,0,0,0,3,
+07/16/14,Josh and Roy,Optima,G7,N,NW,<1m ,23,0,0,0,0,6,
+07/16/14,Josh and Roy,Optima,G7,N,SE,>1m,32,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,G7,N,SE,<1m ,17,0,0,0,0,25,
+07/16/14,Josh and Roy,Optima,G8,Y,NE,>1m,54,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G8,Y,NE,<1m ,27,0,0,0,0,2,
+07/16/14,Josh and Roy,Optima,G8,Y,SW,>1m,71,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,G8,Y,SW,<1m ,28,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,H8,Y,NE,>1m,9,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H8,Y,NE,<1m ,15,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H8,Y,SW,>1m,18,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H8,Y,SW,<1m ,15,0,0,0,0,6,
+07/16/14,Josh and Roy,Optima,H5,Y,NW,>1m,5,0,0,0,0,4,
+07/16/14,Josh and Roy,Optima,H5,Y,NW,<1m ,2,0,0,0,0,19,
+07/16/14,Josh and Roy,Optima,H5,Y,SE,>1m,6,0,0,0,0,0,Quarter of quadrant continuous Aromatic Sumac (.5-1m tall)
+07/16/14,Josh and Roy,Optima,H5,Y,SE,<1m ,0,0,0,0,0,5,
+07/16/14,Josh and Roy,Optima,H4,Y,NE,>1m,22,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H4,Y,NE,<1m ,15,0,0,0,0,4,
+07/16/14,Josh and Roy,Optima,H4,Y,SW,>1m,22,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H4,Y,SW,<1m ,8,0,0,0,0,16,
+07/16/14,Josh and Roy,Optima,H3,Y,NW,>1m,0,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H3,Y,NW,<1m ,0,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H3,Y,SE,>1m,11,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H3,Y,SE,<1m ,6,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H2,Y,NW,>1m,11,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H2,Y,NW,<1m ,10,0,0,0,0,1,
+07/16/14,Josh and Roy,Optima,H2,Y,SE,>1m,28,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H2,Y,SE,<1m ,10,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H1,Y,NW,>1m,34,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H1,Y,NW,<1m ,21,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H1,Y,SE,>1m,3,0,0,0,0,0,
+07/16/14,Josh and Roy,Optima,H1,Y,SE,<1m ,2,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,A1,N,NE,>1m,0,0,0,0,25,0,Densely packed oak trees .75-1m tall
+07/20/14,Josh and Roy,Packsaddle,A1,N,NE,<1m ,0,4,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,A1,N,SW,>1m,0,0,0,0,6,0,Covered in .25m oak trees
+07/20/14,Josh and Roy,Packsaddle,A1,N,SW,<1m ,1,8,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,B2,Y,NE,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,B2,Y,NE,<1m ,2,14,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,B2,Y,SW,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,B2,Y,SW,<1m ,1,13,0,0,0,0,Covered in oak trees .5-.75m tall 
+07/20/14,Josh and Roy,Packsaddle,C4,N,NW,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,C4,N,NW,<1m ,9,12,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,C4,N,SE,>1m,0,0,0,0,0,0,Covered in oak trees .5-.75m tall 
+07/20/14,Josh and Roy,Packsaddle,C4,N,SE,<1m ,1,5,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,D4,Y,NW,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,D4,Y,NW,<1m ,1,11,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,D4,Y,SE,>1m,0,0,0,0,19,0,Densely packed oak trees .75-1m tall
+07/20/14,Josh and Roy,Packsaddle,D4,Y,SE,<1m ,1,1,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,D8,Y,NE,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,D8,Y,NE,<1m ,0,0,0,0,10,0,Densely packed oak trees .75-1m tall
+07/20/14,Josh and Roy,Packsaddle,D8,Y,SW,>1m,0,0,0,0,1,0,"Tree 4m, grass/Indian Blanket flower cover"
+07/20/14,Josh and Roy,Packsaddle,D8,Y,SW,<1m ,0,0,0,0,22,0,Densely packed oak trees .75-1m tall
+07/20/14,Josh and Roy,Packsaddle,F8,N,NW,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,F8,N,NW,<1m ,0,32,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,F8,N,SE,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,F8,N,SE,<1m ,0,20,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,G5,N,NW,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,G5,N,NW,<1m ,0,5,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,G5,N,SE,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,G5,N,SE,<1m ,0,10,0,0,0,0,Densely packed oak trees .75-1m tall
+07/20/14,Josh and Roy,Packsaddle,H2,Y,NW,>1m,0,2,1,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,H2,Y,NW,<1m ,0,14,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,H2,Y,SE,>1m,0,2,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,H2,Y,SE,<1m ,0,14,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,G1,N,NE,>1m,0,1,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,G1,N,NE,<1m ,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,G1,N,SW,>1m,0,1,0,0,5,0,Oak trees
+07/20/14,Josh and Roy,Packsaddle,G1,N,SW,<1m ,0,3,0,0,1,0,Oak trees
+07/20/14,Josh and Roy,Packsaddle,E1,Y,NW,>1m,0,0,0,0,0,15,
+07/20/14,Josh and Roy,Packsaddle,E1,Y,NW,<1m ,0,0,1,0,0,1,
+07/20/14,Josh and Roy,Packsaddle,E1,Y,SE,>1m,0,0,0,0,0,0,
+07/20/14,Josh and Roy,Packsaddle,E1,Y,SE,<1m ,0,8,0,0,0,0,Fence in SW quadrant N to S
+07/17/14,Josh and Roy,Rita Blanca,A1,Y,NW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A1,Y,NW,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A1,Y,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A1,Y,SE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A2,Y,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A2,Y,NE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A2,Y,SW,>1m,12,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A2,Y,SW,<1m ,5,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A5,Y,NW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A5,Y,NW,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A5,Y,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A5,Y,SE,<1m ,0,0,0,0,0,1,
+07/17/14,Josh and Roy,Rita Blanca,A8,N,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A8,N,NE,<1m ,0,0,0,0,0,15,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,A8,N,SW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,A8,N,SW,<1m ,0,0,0,0,0,19,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,B7,N,NW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,B7,N,NW,<1m ,15,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,B7,N,SE,>1m,0,0,0,0,0,0,Yucca within 100m of center point
+07/17/14,Josh and Roy,Rita Blanca,B7,N,SE,<1m ,0,0,0,0,0,8,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,B6,Y,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,B6,Y,NE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,B6,Y,SW,>1m,28,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,B6,Y,SW,<1m ,3,0,0,0,0,6,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,B5,Y,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,B5,Y,NE,<1m ,0,0,0,0,0,9,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,B5,Y,SW,>1m,0,0,0,0,0,0,Yucca within 100m of center point (just outside 20m)
+07/17/14,Josh and Roy,Rita Blanca,B5,Y,SW,<1m ,5,0,0,0,0,1,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,C4,N,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,C4,N,NE,<1m ,0,0,0,0,0,2,"Purple thistle, woody stalk"
+07/17/14,Josh and Roy,Rita Blanca,C4,N,SW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,C4,N,SW,<1m ,1,0,0,0,0,3,"Purple thistle, woody stalk (2)"
+07/17/14,Josh and Roy,Rita Blanca,C2,N,NW,>1m,0,0,0,0,0,1,Metal fence post
+07/17/14,Josh and Roy,Rita Blanca,C2,N,NW,<1m ,0,0,0,0,0,1,Woody stalk
+07/17/14,Josh and Roy,Rita Blanca,C2,N,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,C2,N,SE,<1m ,0,0,0,0,0,5,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,C1,N,NE,>1m,5,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,C1,N,NE,<1m ,7,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,C1,N,SW,>1m,9,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,C1,N,SW,<1m ,4,0,0,0,0,2,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,D2,Y,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D2,Y,NE,<1m ,1,0,0,0,0,2,Woody stalk
+07/17/14,Josh and Roy,Rita Blanca,D2,Y,SW,>1m,2,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D2,Y,SW,<1m ,0,0,0,0,0,10,"Wood stalk, Purple thistle (9)"
+07/17/14,Josh and Roy,Rita Blanca,D3,N,NE,>1m,17,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D3,N,NE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D3,N,SW,>1m,1,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D3,N,SW,<1m ,0,0,0,0,0,5,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,D4,Y,NE,>1m,3,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D4,Y,NE,<1m ,2,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D4,Y,SW,>1m,1,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D4,Y,SW,<1m ,2,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D6,N,NW,>1m,1,0,0,0,0,1,Woody flower stalk
+07/17/14,Josh and Roy,Rita Blanca,D6,N,NW,<1m ,0,0,0,0,0,5,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,D6,N,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D6,N,SE,<1m ,0,0,0,0,0,9,"Purple thistle (6), woody stalk (3)"
+07/17/14,Josh and Roy,Rita Blanca,D8,N,N/A,>1m,2,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D8,N,N/A,<1m ,3,0,0,0,0,18,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,D8,N,N/A,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,D8,N,N/A,<1m ,2,0,0,0,0,24,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,E5,N,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,E5,N,NE,<1m ,0,0,0,0,0,5,"Purple thistle (4), woody stalk"
+07/17/14,Josh and Roy,Rita Blanca,E5,N,SW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,E5,N,SW,<1m ,0,0,0,0,0,3,"Purple thistle, woody flower stalk (2)"
+07/17/14,Josh and Roy,Rita Blanca,F4,N,NW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,F4,N,NW,<1m ,3,0,0,0,0,14,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,F4,N,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,F4,N,SE,<1m ,0,0,0,0,0,4,"Woody stalk (2), Purple Thistle (2)"
+07/17/14,Josh and Roy,Rita Blanca,F2,N,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,F2,N,NE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,F2,N,SW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,F2,N,SW,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,F1,Y,NE,>1m,1,0,0,0,0,9,Woody stalk
+07/17/14,Josh and Roy,Rita Blanca,F1,Y,NE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,F1,Y,SW,>1m,0,0,0,0,0,3,Woody stalk
+07/17/14,Josh and Roy,Rita Blanca,F1,Y,SW,<1m ,1,0,0,0,0,2,"Woody stalk, Dense ground cover of shrub-like forb (.5-.75m tall)"
+07/17/14,Josh and Roy,Rita Blanca,G2,Y,NW,>1m,0,0,0,0,0,1,Woody stalk
+07/17/14,Josh and Roy,Rita Blanca,G2,Y,NW,<1m ,2,0,0,0,0,3,Woody stalk
+07/17/14,Josh and Roy,Rita Blanca,G2,Y,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,G2,Y,SE,<1m ,0,0,0,0,0,12,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,G4,N,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,G4,N,NE,<1m ,0,0,0,0,0,3,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,G4,N,SW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,G4,N,SW,<1m ,0,0,0,0,0,3,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,G6,N,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,G6,N,NE,<1m ,0,0,0,0,0,1,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,G6,N,SW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,G6,N,SW,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H8,Y,NE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H8,Y,NE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H8,Y,SW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H8,Y,SW,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H5,N,NW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H5,N,NW,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H5,N,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H5,N,SE,<1m ,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H1,N,NW,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H1,N,NW,<1m ,0,0,0,0,0,2,Purple thistle
+07/17/14,Josh and Roy,Rita Blanca,H1,N,SE,>1m,0,0,0,0,0,0,
+07/17/14,Josh and Roy,Rita Blanca,H1,N,SE,<1m ,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,A1,N,N/A,>1m,0,0,1,0,1,0,"Juniper, one dead tree 4m"
+07/19/14,Josh and Roy,Selman,A1,N,N/A,<1m ,2,0,1,0,0,0,Barbwire fence through plot
+07/19/14,Josh and Roy,Selman,B2,Y,N/A,>1m,0,0,0,0,0,0,.25m grass
+07/19/14,Josh and Roy,Selman,B2,Y,N/A,<1m ,0,0,0,0,0,1,Aromatic Sumac
+07/19/14,Josh and Roy,Selman,C1,Y,N/A,>1m,0,0,0,0,0,0,Barbwire rolls in grass (over 1m)
+07/19/14,Josh and Roy,Selman,C1,Y,N/A,<1m ,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,F1,N,N/A,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,F1,N,N/A,<1m ,0,1,0,0,0,0,
+07/19/14,Josh and Roy,Selman,F3,N,N/A,>1m,1,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,F3,N,N/A,<1m ,1,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,F6,Y,N/A,>1m,0,0,0,0,0,1,Mesquite
+07/19/14,Josh and Roy,Selman,F6,Y,N/A,<1m ,0,1,0,0,0,1,Woody stalk
+07/19/14,Josh and Roy,Selman,B6,N,N/A,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,B6,N,N/A,<1m ,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,C3,N,N/A,>1m,0,0,0,0,0,0,
+07/19/14,Josh and Roy,Selman,C3,N,N/A,<1m ,,0,0,0,0,0,
