@@ -255,82 +255,82 @@ Date,Observer,Location,Point,Presence,Direction,Forb,Grass,Dead,Bare,Litter,Othe
 07/18/14,Tory,Black Mesa,D3,N,South,0,10,15,65,10,0,,100
 07/18/14,Tory,Black Mesa,D3,N,East,0,30,10,30,30,0,,100
 07/18/14,Tory,Black Mesa,D3,N,West,100,0,0,0,0,0,Bush,100
-07/18/14,Tory,Compound,A1,N,North,40,0,30,30,0,0,,100
-07/18/14,Tory,Compound,A1,N,South,0,0,0,90,10,0,,100
-07/18/14,Tory,Compound,A1,N,East,0,0,0,50,50,0,,100
-07/18/14,Tory,Compound,A1,N,West,0,0,0,80,20,0,,100
-07/18/14,Tory,Compound,A4,N,North,50,10,10,0,30,0,,100
-07/18/14,Tory,Compound,A4,N,South,100,0,0,0,0,0,,100
-07/18/14,Tory,Compound,A4,N,East,50,0,0,50,0,0,,100
-07/18/14,Tory,Compound,A4,N,West,10,30,40,0,20,0,,100
-07/18/14,Tory,Compound,A5,Y,North,80,0,0,0,20,0,,100
-07/18/14,Tory,Compound,A5,Y,South,50,0,0,50,0,0,,100
-07/18/14,Tory,Compound,A5,Y,East,50,10,5,30,5,0,,100
-07/18/14,Tory,Compound,A5,Y,West,50,0,0,50,0,0,,100
-07/18/14,Tory,Compound,A6,Y,North,80,0,0,20,0,0,,100
-07/18/14,Tory,Compound,A6,Y,South,25,25,35,5,10,0,,100
-07/18/14,Tory,Compound,A6,Y,East,25,25,50,0,0,0,,100
-07/18/14,Tory,Compound,A6,Y,West,70,0,10,0,20,0,,100
-07/18/14,Tory,Compound,A7,Y,North,50,10,0,40,0,0,,100
-07/18/14,Tory,Compound,A7,Y,South,0,20,20,55,5,0,,100
-07/18/14,Tory,Compound,A7,Y,East,30,25,10,0,35,0,,100
-07/18/14,Tory,Compound,A7,Y,West,10,20,30,0,40,0,,100
-07/18/14,Tory,Compound,A8,N,North,40,10,10,20,20,0,,100
-07/18/14,Tory,Compound,A8,N,South,10,20,10,55,5,0,,100
-07/18/14,Tory,Compound,A8,N,East,80,0,0,0,20,0,,100
-07/18/14,Tory,Compound,A8,N,West,70,0,10,0,20,0,,100
-07/18/14,Tory,Compound,B4,Y,North,50,0,0,50,0,0,,100
-07/18/14,Tory,Compound,B4,Y,South,30,0,10,50,10,0,,100
-07/18/14,Tory,Compound,B4,Y,East,45,40,5,5,5,0,,100
-07/18/14,Tory,Compound,B4,Y,West,20,0,0,60,20,0,,100
-07/18/14,Tory,Compound,C4,N,North,40,25,20,5,10,0,,100
-07/18/14,Tory,Compound,C4,N,South,15,5,40,0,40,0,,100
-07/18/14,Tory,Compound,C4,N,East,25,10,40,20,5,0,,100
-07/18/14,Tory,Compound,C4,N,West,15,0,0,45,40,0,,100
-07/18/14,Tory,Compound,D1,N,North,25,25,20,30,10,0,,110
-07/18/14,Tory,Compound,D1,N,South,0,40,60,0,0,0,,100
-07/18/14,Tory,Compound,D1,N,East,0,60,40,0,0,0,,100
-07/18/14,Tory,Compound,D1,N,West,0,50,0,50,0,0,,100
-07/18/14,Tory,Compound,D3,Y,North,40,0,0,0,60,0,,100
-07/18/14,Tory,Compound,D3,Y,South,45,5,0,10,40,0,,100
-07/18/14,Tory,Compound,D3,Y,East,25,5,10,0,60,0,,100
-07/18/14,Tory,Compound,D3,Y,West,30,40,5,5,20,0,,100
-07/18/14,Tory,Compound,D4,Y,North,40,0,10,0,50,0,,100
-07/18/14,Tory,Compound,D4,Y,South,25,25,25,25,0,0,,100
-07/18/14,Tory,Compound,D4,Y,East,25,10,25,40,0,0,,100
-07/18/14,Tory,Compound,D4,Y,West,25,0,30,5,40,0,,100
-07/18/14,Tory,Compound,D5,Y,North,25,25,20,30,0,0,,100
-07/18/14,Tory,Compound,D5,Y,South,70,5,0,25,0,0,,100
-07/18/14,Tory,Compound,D5,Y,East,5,70,10,10,5,0,,100
-07/18/14,Tory,Compound,D5,Y,West,25,20,10,40,5,0,,100
-07/18/14,Tory,Compound,D8,N,North,0,75,0,25,0,0,,100
-07/18/14,Tory,Compound,D8,N,South,10,40,40,0,10,0,,100
-07/18/14,Tory,Compound,D8,N,East,0,45,25,25,5,0,,100
-07/18/14,Tory,Compound,D8,N,West,0,40,60,0,0,0,,100
-07/18/14,Tory,Compound,E4,Y,North,25,25,50,0,0,0,,100
-07/18/14,Tory,Compound,E4,Y,South,5,95,0,0,0,0,,100
-07/18/14,Tory,Compound,E4,Y,East,5,0,5,70,0,0,,80
-07/18/14,Tory,Compound,E4,Y,West,65,0,25,5,5,0,,100
-07/18/14,Tory,Compound,F4,Y,North,25,5,15,50,5,0,,100
-07/18/14,Tory,Compound,F4,Y,South,25,25,40,5,5,0,Cacti,100
-07/18/14,Tory,Compound,F4,Y,East,15,25,15,45,0,0,,100
-07/18/14,Tory,Compound,F4,Y,West,10,5,75,5,5,0,,100
-07/18/14,Tory,Compound,F6,N,North,0,30,70,0,0,0,,100
-07/18/14,Tory,Compound,F6,N,South,25,30,30,5,10,0,,100
-07/18/14,Tory,Compound,F6,N,East,10,25,5,60,0,0,,100
-07/18/14,Tory,Compound,F6,N,West,0,50,50,0,0,0,,100
-07/18/14,Tory,Compound,H8,N,North,0,25,75,0,0,0,,100
-07/18/14,Tory,Compound,H8,N,South,0,55,15,15,15,0,,100
-07/18/14,Tory,Compound,H8,N,East,0,50,50,0,0,0,,100
-07/18/14,Tory,Compound,H8,N,West,25,50,25,0,0,0,,100
-07/18/14,Tory,Compound,H6,N,North,0,80,20,0,0,0,,100
-07/18/14,Tory,Compound,H6,N,South,0,55,20,5,20,0,,100
-07/18/14,Tory,Compound,H6,N,East,0,40,20,40,0,0,,100
-07/18/14,Tory,Compound,H6,N,West,0,20,0,0,80,0,,100
-07/18/14,Tory,Compound,H4,N,North,10,25,20,5,40,0,Cacti,100
-07/18/14,Tory,Compound,H4,N,South,25,25,15,25,10,0,,100
-07/18/14,Tory,Compound,H4,N,East,30,0,30,35,5,0,Cacti,100
-07/18/14,Tory,Compound,H4,N,West,0,80,20,0,0,0,,100
+07/18/14,Tory,Optima Compound,A1,N,North,40,0,30,30,0,0,,100
+07/18/14,Tory,Optima Compound,A1,N,South,0,0,0,90,10,0,,100
+07/18/14,Tory,Optima Compound,A1,N,East,0,0,0,50,50,0,,100
+07/18/14,Tory,Optima Compound,A1,N,West,0,0,0,80,20,0,,100
+07/18/14,Tory,Optima Compound,A4,N,North,50,10,10,0,30,0,,100
+07/18/14,Tory,Optima Compound,A4,N,South,100,0,0,0,0,0,,100
+07/18/14,Tory,Optima Compound,A4,N,East,50,0,0,50,0,0,,100
+07/18/14,Tory,Optima Compound,A4,N,West,10,30,40,0,20,0,,100
+07/18/14,Tory,Optima Compound,A5,Y,North,80,0,0,0,20,0,,100
+07/18/14,Tory,Optima Compound,A5,Y,South,50,0,0,50,0,0,,100
+07/18/14,Tory,Optima Compound,A5,Y,East,50,10,5,30,5,0,,100
+07/18/14,Tory,Optima Compound,A5,Y,West,50,0,0,50,0,0,,100
+07/18/14,Tory,Optima Compound,A6,Y,North,80,0,0,20,0,0,,100
+07/18/14,Tory,Optima Compound,A6,Y,South,25,25,35,5,10,0,,100
+07/18/14,Tory,Optima Compound,A6,Y,East,25,25,50,0,0,0,,100
+07/18/14,Tory,Optima Compound,A6,Y,West,70,0,10,0,20,0,,100
+07/18/14,Tory,Optima Compound,A7,Y,North,50,10,0,40,0,0,,100
+07/18/14,Tory,Optima Compound,A7,Y,South,0,20,20,55,5,0,,100
+07/18/14,Tory,Optima Compound,A7,Y,East,30,25,10,0,35,0,,100
+07/18/14,Tory,Optima Compound,A7,Y,West,10,20,30,0,40,0,,100
+07/18/14,Tory,Optima Compound,A8,N,North,40,10,10,20,20,0,,100
+07/18/14,Tory,Optima Compound,A8,N,South,10,20,10,55,5,0,,100
+07/18/14,Tory,Optima Compound,A8,N,East,80,0,0,0,20,0,,100
+07/18/14,Tory,Optima Compound,A8,N,West,70,0,10,0,20,0,,100
+07/18/14,Tory,Optima Compound,B4,Y,North,50,0,0,50,0,0,,100
+07/18/14,Tory,Optima Compound,B4,Y,South,30,0,10,50,10,0,,100
+07/18/14,Tory,Optima Compound,B4,Y,East,45,40,5,5,5,0,,100
+07/18/14,Tory,Optima Compound,B4,Y,West,20,0,0,60,20,0,,100
+07/18/14,Tory,Optima Compound,C4,N,North,40,25,20,5,10,0,,100
+07/18/14,Tory,Optima Compound,C4,N,South,15,5,40,0,40,0,,100
+07/18/14,Tory,Optima Compound,C4,N,East,25,10,40,20,5,0,,100
+07/18/14,Tory,Optima Compound,C4,N,West,15,0,0,45,40,0,,100
+07/18/14,Tory,Optima Compound,D1,N,North,25,25,20,30,10,0,,110
+07/18/14,Tory,Optima Compound,D1,N,South,0,40,60,0,0,0,,100
+07/18/14,Tory,Optima Compound,D1,N,East,0,60,40,0,0,0,,100
+07/18/14,Tory,Optima Compound,D1,N,West,0,50,0,50,0,0,,100
+07/18/14,Tory,Optima Compound,D3,Y,North,40,0,0,0,60,0,,100
+07/18/14,Tory,Optima Compound,D3,Y,South,45,5,0,10,40,0,,100
+07/18/14,Tory,Optima Compound,D3,Y,East,25,5,10,0,60,0,,100
+07/18/14,Tory,Optima Compound,D3,Y,West,30,40,5,5,20,0,,100
+07/18/14,Tory,Optima Compound,D4,Y,North,40,0,10,0,50,0,,100
+07/18/14,Tory,Optima Compound,D4,Y,South,25,25,25,25,0,0,,100
+07/18/14,Tory,Optima Compound,D4,Y,East,25,10,25,40,0,0,,100
+07/18/14,Tory,Optima Compound,D4,Y,West,25,0,30,5,40,0,,100
+07/18/14,Tory,Optima Compound,D5,Y,North,25,25,20,30,0,0,,100
+07/18/14,Tory,Optima Compound,D5,Y,South,70,5,0,25,0,0,,100
+07/18/14,Tory,Optima Compound,D5,Y,East,5,70,10,10,5,0,,100
+07/18/14,Tory,Optima Compound,D5,Y,West,25,20,10,40,5,0,,100
+07/18/14,Tory,Optima Compound,D8,N,North,0,75,0,25,0,0,,100
+07/18/14,Tory,Optima Compound,D8,N,South,10,40,40,0,10,0,,100
+07/18/14,Tory,Optima Compound,D8,N,East,0,45,25,25,5,0,,100
+07/18/14,Tory,Optima Compound,D8,N,West,0,40,60,0,0,0,,100
+07/18/14,Tory,Optima Compound,E4,Y,North,25,25,50,0,0,0,,100
+07/18/14,Tory,Optima Compound,E4,Y,South,5,95,0,0,0,0,,100
+07/18/14,Tory,Optima Compound,E4,Y,East,5,0,5,70,0,0,,80
+07/18/14,Tory,Optima Compound,E4,Y,West,65,0,25,5,5,0,,100
+07/18/14,Tory,Optima Compound,F4,Y,North,25,5,15,50,5,0,,100
+07/18/14,Tory,Optima Compound,F4,Y,South,25,25,40,5,5,0,Cacti,100
+07/18/14,Tory,Optima Compound,F4,Y,East,15,25,15,45,0,0,,100
+07/18/14,Tory,Optima Compound,F4,Y,West,10,5,75,5,5,0,,100
+07/18/14,Tory,Optima Compound,F6,N,North,0,30,70,0,0,0,,100
+07/18/14,Tory,Optima Compound,F6,N,South,25,30,30,5,10,0,,100
+07/18/14,Tory,Optima Compound,F6,N,East,10,25,5,60,0,0,,100
+07/18/14,Tory,Optima Compound,F6,N,West,0,50,50,0,0,0,,100
+07/18/14,Tory,Optima Compound,H8,N,North,0,25,75,0,0,0,,100
+07/18/14,Tory,Optima Compound,H8,N,South,0,55,15,15,15,0,,100
+07/18/14,Tory,Optima Compound,H8,N,East,0,50,50,0,0,0,,100
+07/18/14,Tory,Optima Compound,H8,N,West,25,50,25,0,0,0,,100
+07/18/14,Tory,Optima Compound,H6,N,North,0,80,20,0,0,0,,100
+07/18/14,Tory,Optima Compound,H6,N,South,0,55,20,5,20,0,,100
+07/18/14,Tory,Optima Compound,H6,N,East,0,40,20,40,0,0,,100
+07/18/14,Tory,Optima Compound,H6,N,West,0,20,0,0,80,0,,100
+07/18/14,Tory,Optima Compound,H4,N,North,10,25,20,5,40,0,Cacti,100
+07/18/14,Tory,Optima Compound,H4,N,South,25,25,15,25,10,0,,100
+07/18/14,Tory,Optima Compound,H4,N,East,30,0,30,35,5,0,Cacti,100
+07/18/14,Tory,Optima Compound,H4,N,West,0,80,20,0,0,0,,100
 07/19/14,Tory,Cimarron Hills,B2,N,North,100,0,0,0,0,0,Sage,100
 07/19/14,Tory,Cimarron Hills,B2,N,South,85,0,5,5,5,0,Sage,100
 07/19/14,Tory,Cimarron Hills,B2,N,East,20,20,0,0,0,60,Sage (60),100
