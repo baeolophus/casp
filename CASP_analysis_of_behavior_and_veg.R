@@ -203,7 +203,7 @@ library(lmerTest)
 #Strongest reaction by veg where present
 lm.distance.veg <- lmer(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
                         abovePC1 + abovePC2 + abovePC3 +
-                        abovePC1 + abovePC2 + abovePC3 + (1|Location),
+                          belowPC1 + belowPC2 + belowPC3+(1|Location),
                       data = behavior.veg[behavior.veg$Response==1,])
 
 summary(lm.distance.veg)
@@ -227,24 +227,106 @@ summary(lm.strong.veg)
 
 #Figures
 
-fig2pred <- predict(glm.presence.veg)
-
-ndFig2<- data.frame("latitude"=seq(min(Depredations$latitude),
-                                max(Depredations$latitude),
-                                length.out=length(Depredations$latitude)))
+ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
+                    "daubPC2" = mean(behavior.veg$daubPC2),
+                    "daubPC3" = mean(behavior.veg$daubPC3),
+                    "abovePC3"=seq(min(behavior.veg$abovePC3),
+                                max(behavior.veg$abovePC3),
+                                length.out=length(behavior.veg$abovePC3)),
+                    "abovePC2" = mean(behavior.veg$abovePC2),
+                    "abovePC1" = mean(behavior.veg$abovePC1),
+                    "belowPC1" = mean(behavior.veg$belowPC1),
+                    "belowPC2" = mean(behavior.veg$belowPC2),
+                    "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
-lines(ndW$latitude,
-      predict.glm(glm.wolf,
-                  newdata=ndW,
-                  type="response"),
+
+
+lines(ndFig2$abovePC3,
+      predict(glm.presence.veg,
+                  newdata=ndFig2,
+                  type="response",
+              re.form = NA),
       lty="solid",lwd=2)
 
 plot(Response ~ abovePC3,
      data = behavior.veg,
      xlab = "AbovePC3: decreasing yucca (-0.76), increasing trees (0.53)")
 
+
+ndFig3<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
+                    "daubPC2" = mean(behavior.veg$daubPC2),
+                    "daubPC3" = mean(behavior.veg$daubPC3),
+                    "abovePC1"= mean(behavior.veg$abovePC1),
+                    "abovePC2" = mean(behavior.veg$abovePC2),
+                    "abovePC3" = mean(behavior.veg$abovePC3),
+                    "belowPC1" = seq(min(behavior.veg$belowPC1),
+                                     max(behavior.veg$belowPC1),
+                                     length.out=length(behavior.veg$belowPC1)),
+                    "belowPC2" = mean(behavior.veg$belowPC2),
+                    "belowPC3" = mean(behavior.veg$belowPC3))
+#plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
+
+
+
+par(mar=c(7,5,5,4))
 plot(Response ~ belowPC1,
      data = behavior.veg,
-     xlab = "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
+     xlab = "")
+mtext(
+      "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
      increasing sandplum (0.59), decreasing cholla (-0.38), and
-     decreasing other shrub sp (-0.42)")
+     decreasing other shrub sp (-0.42)",
+      side=1, line=5)
+lines(ndFig3$belowPC1,
+      predict(glm.presence.veg,
+              newdata=ndFig2,
+              type="response",
+              re.form = NA),
+      lty="solid",lwd=2)
+
+#Interpretation for marginal PC
+
+
+ndnone<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
+                    "daubPC2" = mean(behavior.veg$daubPC2),
+                    "daubPC3" = mean(behavior.veg$daubPC3),
+                    "abovePC1"= seq(min(behavior.veg$abovePC1),
+                                    max(behavior.veg$abovePC1),
+                                    length.out=length(behavior.veg$abovePC1)),
+                    "abovePC2" = mean(behavior.veg$abovePC2),
+                    "abovePC3" = mean(behavior.veg$abovePC3),
+                    "belowPC1" = mean(behavior.veg$belowPC1),
+                    "belowPC2" = mean(behavior.veg$belowPC2),
+                    "belowPC3" = mean(behavior.veg$belowPC3))
+#plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
+
+
+
+par(mar=c(7,5,5,4))
+plot(Response ~ abovePC1,
+     data = behavior.veg,
+     xlab = "")
+mtext(
+  "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
+  decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
+  side=1, line=4)
+lines(ndnone$abovePC1,
+      predict(glm.presence.veg,
+              newdata=ndnone,
+              type="response",
+              re.form = NA),
+      lty="solid",lwd=2)
+
+par(mar=c(7,5,5,4))
+plot(abovePC3~
+     belowPC1,
+     data = behavior.veg,
+     pch = 21,
+     bg = as.factor(Location),
+     xlab = "",
+     ylab = "AbovePC3: decreasing yucca (-0.76), increasing trees (0.53)")
+mtext(
+  "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
+     increasing sandplum (0.59), decreasing cholla (-0.38), and
+  decreasing other shrub sp (-0.42)",
+  side=1, line=5)
