@@ -10,6 +10,10 @@ CASP_veg_sp   <- read.csv(file = "CASP/combined_vegetation_surveys_CASP.csv")
 CASP_veg_daub$Pointnames <- CASP_veg_daub$Point
 CASP_veg_sp$Pointnames <- CASP_veg_sp$Point
 
+#Change $Response to be 0-2 as 0 (no response, could just be a neighbor) and 3-7 as 1 (yes).
+CASP_behavior$Response[CASP_behavior$Strongest_behavior <= 2] <- 0
+CASP_behavior$Response[CASP_behavior$Strongest_behavior > 2] <- 1
+
 CASP_behavior <- unite(CASP_behavior,
       Pointnames,
       Transect, Point, 
@@ -115,6 +119,10 @@ pca.veg.daub$rotation #eigenvectors.  Again the signs are arbitrary so don't wor
 #Eigenvectors are how you get PCs, so also a sort of weight, just harder to think about.
 
 
+check.for.cor.below <-cor(
+  behavior.veg[,
+               veg.below],
+  method="pearson")
 
 pscores<-data.frame(pca.veg.daub$x) #puts PCA scores in a data frame
 
@@ -151,7 +159,24 @@ pca.veg.above$rotation #eigenvectors.  Again the signs are arbitrary so don't wo
 #Pearson's correlation of components with original variables.  Easier to interpret.
 #Eigenvectors are how you get PCs, so also a sort of weight, just harder to think about.
 
+check.for.cor.above <-cor(
+                         behavior.veg[,
+                                      veg.above],
+                         method="pearson")
 
+#Check for above/below cors
+check.for.cor.both <-cor(  behavior.veg[,
+                                        veg.below],
+  behavior.veg[,
+               veg.above],
+  method="pearson")
+#Yucca above/below correlated at 0.89194720
+#Cholla above/below correlated at 0.78313087
+#Sage above/below correlated at 0.55894587
+#However, none are exact corerlations and all provide information that we want,
+#so I don't think we are
+#overemphasizing their contribution here.  Everything else is below |0.5|.
+#Similarly low correlations among types of vegetation in above and below categories on their own.
 
 pscores.above<-data.frame(pca.veg.above$x) #puts PCA scores in a data frame
 
@@ -203,26 +228,62 @@ library(lmerTest)
 #Strongest reaction by veg where present
 lm.distance.veg <- lmer(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
                         abovePC1 + abovePC2 + abovePC3 +
-                          belowPC1 + belowPC2 + belowPC3+(1|Location),
+                          belowPC1 + belowPC2 + belowPC3+abratio+(1|Location),
                       data = behavior.veg[behavior.veg$Response==1,])
 
 summary(lm.distance.veg)
+
+lm.distance.abovebelow <- lmer(ClosestDistance ~ above1.sumCounts +below1.sumCounts+(1|Location),
+                        data = behavior.veg[behavior.veg$Response==1,])
+
+summary(lm.distance.abovebelow)
 
 #Presence/absence by veg
 
 glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
                           abovePC1 + abovePC2 + abovePC3 +
-                          belowPC1 + belowPC2 + belowPC3+ (1|Location),
+                          belowPC1 + belowPC2 + belowPC3+ abratio+(1|Location),
                       data = behavior.veg,
                       family = "binomial")
 
 summary(glm.presence.veg)
 
-lm.strong.veg <- lmer(Strongest_behavior ~ daubPC1 + daubPC2 + daubPC3 +
-                        abovePC1 + abovePC2 + abovePC3 +
-                      belowPC1 + belowPC2 + belowPC3 + (1|Location),
-                      data = behavior.veg)
-summary(lm.strong.veg)
+#Simply using counts alone wastes a lot of info.
+glm.presence.abovebelow <- glmer(Response ~ above1.sumCounts +below1.sumCounts+abratio+ (1|Location),
+                          data = behavior.veg,
+                          family = "binomial")
+
+summary(glm.presence.abovebelow)
+
+#Add ratio of above/below.
+
+behavior.veg$abratio <- behavior.veg$above1.sumCounts/behavior.veg$below1.sumCounts
+
+#Per behavior tests vs absence
+library(mixcat)
+attach(behavior.veg)
+behavior.veg$fLocation<- as.factor(behavior.veg$Location)
+test <-npmlt(Strongest_behavior+1 ~ daubPC1 + daubPC2 + daubPC3 +
+        abovePC1 + abovePC2 + abovePC3 +
+        belowPC1 + belowPC2 + belowPC3,
+
+      random=~1,
+      id=fLocation,
+      k=2,
+      EB=FALSE)
+
+summary(test)
+z <- test$coefficients/test$SE.coefficients
+z
+##          (Intercept) sesmiddle seshigh  write
+## general        2.445   -1.2018  -2.261 -2.706
+## vocation       4.485    0.6117  -1.650 -5.113
+# 2-tailed z test
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+round(p,2)
+#possibility of surface map-
+#CASP presence vs vegtation to account for spatial autocorrelation (some birds are same)
 
 
 #Figures
@@ -321,8 +382,9 @@ par(mar=c(7,5,5,4))
 plot(abovePC3~
      belowPC1,
      data = behavior.veg,
-     pch = 21,
-     bg = as.factor(Location),
+     pch = as.numeric(as.factor(Location)),
+     bg = as.factor(Response),
+     col = as.factor(Response),
      xlab = "",
      ylab = "AbovePC3: decreasing yucca (-0.76), increasing trees (0.53)")
 mtext(
