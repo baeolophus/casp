@@ -1,10 +1,16 @@
 #Cassin's Sparrows
 
+###Load libraries
+library(lme4)
+library(lmerTest)
 library(tidyverse)
 
+###Load data files
 CASP_behavior <- read.csv(file = "CASP/20170207_CASP_playback_responses_combined_longform.csv")
 CASP_veg_daub <- read.csv(file = "CASP/combined_vegetation_percent_cover_CASP.csv")
 CASP_veg_sp   <- read.csv(file = "CASP/combined_vegetation_surveys_CASP.csv")
+
+###Taking raw data to summarized formats
 
 #get everything under same column name to assign points
 CASP_veg_daub$Pointnames <- CASP_veg_daub$Point
@@ -20,7 +26,7 @@ CASP_behavior <- unite(CASP_behavior,
       sep = "", 
       remove = TRUE)
 
-#Summarize daub
+#Summarize daubenmire measurements
 
 CASP_veg_daub_sum <- CASP_veg_daub %>%
   group_by(Location, Pointnames) %>%
@@ -81,6 +87,7 @@ CASP_veg_sp_sum_spread <- CASP_veg_sp_sum %>%
   unite(temp1, Height, temp, sep = ".") %>% 
   spread(temp1, score)
 
+#Create dataset that will be used in analyses.
 behavior.veg <- left_join(behavior.veg1,
                           CASP_veg_sp_sum_spread,
                           by = c("Location",
@@ -92,6 +99,12 @@ behavior.veg <- left_join(behavior.veg1,
 behavior.veg <- behavior.veg %>%
   filter(!is.na(mSum))
 
+#Add ratio of above/below.
+behavior.veg$abratio <- behavior.veg$above1.sumCounts/behavior.veg$below1.sumCounts
+
+###Reduce variables using PCA.
+
+#First for Daubenmire.
 veg.daub <- c("mForb",
               "mGrass",
               "mDead",
@@ -118,11 +131,6 @@ pca.veg.daub$rotation #eigenvectors.  Again the signs are arbitrary so don't wor
 #Pearson's correlation of components with original variables.  Easier to interpret.
 #Eigenvectors are how you get PCs, so also a sort of weight, just harder to think about.
 
-
-check.for.cor.below <-cor(
-  behavior.veg[,
-               veg.below],
-  method="pearson")
 
 pscores<-data.frame(pca.veg.daub$x) #puts PCA scores in a data frame
 
@@ -164,19 +172,6 @@ check.for.cor.above <-cor(
                                       veg.above],
                          method="pearson")
 
-#Check for above/below cors
-check.for.cor.both <-cor(  behavior.veg[,
-                                        veg.below],
-  behavior.veg[,
-               veg.above],
-  method="pearson")
-#Yucca above/below correlated at 0.89194720
-#Cholla above/below correlated at 0.78313087
-#Sage above/below correlated at 0.55894587
-#However, none are exact corerlations and all provide information that we want,
-#so I don't think we are
-#overemphasizing their contribution here.  Everything else is below |0.5|.
-#Similarly low correlations among types of vegetation in above and below categories on their own.
 
 pscores.above<-data.frame(pca.veg.above$x) #puts PCA scores in a data frame
 
@@ -222,10 +217,29 @@ behavior.veg$belowPC1 <- pscores.below$PC1
 behavior.veg$belowPC2 <- pscores.below$PC2
 behavior.veg$belowPC3 <- pscores.below$PC3
 
-#load libraries
-library(lme4)
-library(lmerTest)
-#Strongest reaction by veg where present
+
+check.for.cor.below <-cor(
+  behavior.veg[,
+               veg.below],
+  method="pearson")
+
+#Check for above/below cors
+check.for.cor.both <-cor(  behavior.veg[,
+                                        veg.below],
+                           behavior.veg[,
+                                        veg.above],
+                           method="pearson")
+#Yucca above/below correlated at 0.89194720
+#Cholla above/below correlated at 0.78313087
+#Sage above/below correlated at 0.55894587
+#However, none are exact corerlations and all provide information that we want,
+#so I don't think we are
+#overemphasizing their contribution here.  Everything else is below |0.5|.
+#Similarly low correlations among types of vegetation in above and below categories on their own.
+
+###ANALYSES
+
+#Strongest reaction (as measured by distance of closest approach) by veg where present
 lm.distance.veg <- lmer(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
                         abovePC1 + abovePC2 + abovePC3 +
                           belowPC1 + belowPC2 + belowPC3+abratio+(1|Location),
@@ -233,12 +247,8 @@ lm.distance.veg <- lmer(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
 
 summary(lm.distance.veg)
 
-lm.distance.abovebelow <- lmer(ClosestDistance ~ above1.sumCounts +below1.sumCounts+(1|Location),
-                        data = behavior.veg[behavior.veg$Response==1,])
 
-summary(lm.distance.abovebelow)
-
-#Presence/absence by veg
+#Presence/absence of defense by veg
 
 glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
                           abovePC1 + abovePC2 + abovePC3 +
@@ -248,16 +258,7 @@ glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
 
 summary(glm.presence.veg)
 
-#Simply using counts alone wastes a lot of info.
-glm.presence.abovebelow <- glmer(Response ~ above1.sumCounts +below1.sumCounts+abratio+ (1|Location),
-                          data = behavior.veg,
-                          family = "binomial")
 
-summary(glm.presence.abovebelow)
-
-#Add ratio of above/below.
-
-behavior.veg$abratio <- behavior.veg$above1.sumCounts/behavior.veg$below1.sumCounts
 
 #Per behavior tests vs absence
 library(mixcat)
