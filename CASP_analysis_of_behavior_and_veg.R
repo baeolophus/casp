@@ -3,6 +3,7 @@
 ###Load libraries
 library(lme4)
 library(lmerTest)
+library(raster)
 library(tidyverse)
 
 ###Load data files
@@ -259,8 +260,11 @@ glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
 summary(glm.presence.veg)
 
 
-#Figures
+###FIGURES
 
+#For manuscript, figures of the two significantly correlated PC axes.
+
+#Figure 2. abovePC3
 ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "daubPC2" = mean(behavior.veg$daubPC2),
                     "daubPC3" = mean(behavior.veg$daubPC3),
@@ -287,6 +291,7 @@ plot(Response ~ abovePC3,
      xlab = "AbovePC3: decreasing yucca (-0.76), increasing trees (0.53)")
 
 
+#Figure 3, belowPC1
 ndFig3<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "daubPC2" = mean(behavior.veg$daubPC2),
                     "daubPC3" = mean(behavior.veg$daubPC3),
@@ -318,9 +323,8 @@ lines(ndFig3$belowPC1,
               re.form = NA),
       lty="solid",lwd=2)
 
-#Interpretation for marginal PC
 
-
+#Figure not used in manuscript, but useful for interpretation for marginal PC
 ndnone<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "daubPC2" = mean(behavior.veg$daubPC2),
                     "daubPC3" = mean(behavior.veg$daubPC3),
@@ -333,9 +337,6 @@ ndnone<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "belowPC2" = mean(behavior.veg$belowPC2),
                     "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
-
-
-
 par(mar=c(7,5,5,4))
 plot(Response ~ abovePC1,
      data = behavior.veg,
@@ -365,3 +366,80 @@ mtext(
      increasing sandplum (0.59), decreasing cholla (-0.38), and
   decreasing other shrub sp (-0.42)",
   side=1, line=5)
+
+###Map of study sites (Figure 1)
+
+#Load ecoregions raster
+ecoregions <- raster(x = paste0(getwd(),
+                                "/CASP/Raster/ok_vegetation.img"))
+
+#check CRS
+crs(ecoregions)
+
+#Add spatial data to points and transform (quicker than transforming whole raster)
+behavior.veg$lon <- behavior.veg$Longitude
+behavior.veg$lat <- behavior.veg$Latitude
+behavior.veg.sp <- behavior.veg
+coordinates(behavior.veg.sp) <- c("lat", 
+                                  "lon") #They are named backwards... lat is actually longitude and vice versa.
+proj4string(behavior.veg.sp) <- CRS("+init=epsg:4326 +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
+summary(behavior.veg.sp)
+behavior.veg.ecoregion <- spTransform(behavior.veg.sp,
+                                      crs(ecoregions))
+crs(behavior.veg.ecoregion)
+
+#Assign metadata to raster
+library(EML)
+library(xml2)
+ecoregions.test <- read_xml(paste0(getwd(),
+                              "/CASP/Raster/oklahoma_vegetation_raster_metadata.xml"))
+ecoregions.test[[1]]
+library(XML)
+ecoregions.test <- xmlTreeParse(paste0(getwd(),
+                                       "/CASP/Raster/oklahoma_vegetation_raster_metadata.xml"))
+xml_data <- xmlToList(ecoregions.test)
+str(xml_data)
+types <- unlist(xml_data[[4]][[3]][[4]])
+types.m <-data.frame(matrix(data = types,
+                 ncol = 3,
+                 byrow = TRUE),
+                 stringsAsFactors = FALSE)
+colnames(types.m) <- c("ID",
+                       "regionname",
+                       "delete")
+types.m$ID <- as.factor(as.numeric(types.m$ID))
+types.m$delete <- NULL
+
+
+#Extract ecoregion data from raster to study points.
+
+behavior.veg$study_region_values <- raster::extract(ecoregions,
+                                       behavior.veg.ecoregion)
+#Summarize using group_by to see what ecoregion each site is in
+#and if each site has more than one ecoregion.
+
+ecoregion.summary.sites <- behavior.veg %>% 
+  group_by(Location,
+           study_region_values,
+           Response) %>%
+  summarize("points" = n())%>%
+  left_join(.,
+            types.m,
+            by = c("study_region_values"="ID"))%>%
+  print()
+
+sample.sizes <- behavior.veg %>% 
+  group_by(Response) %>%
+  summarize("points" = n())%>%
+  print()
+
+
+#Plot GPS points from study on it?
+
+map <- extent(behavior.veg.ecoregion)
+small.eco <- crop(ecoregions,
+                  map+3)
+plot(small.eco, 
+     xlab = "Longitude",
+     ylab = "Latitude")
+plot(behavior.veg.ecoregion, add = TRUE)
