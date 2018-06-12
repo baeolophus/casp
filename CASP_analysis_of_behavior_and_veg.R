@@ -259,34 +259,6 @@ glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
 summary(glm.presence.veg)
 
 
-
-#Per behavior tests vs absence
-library(mixcat)
-attach(behavior.veg)
-behavior.veg$fLocation<- as.factor(behavior.veg$Location)
-test <-npmlt(Strongest_behavior+1 ~ daubPC1 + daubPC2 + daubPC3 +
-        abovePC1 + abovePC2 + abovePC3 +
-        belowPC1 + belowPC2 + belowPC3,
-
-      random=~1,
-      id=fLocation,
-      k=2,
-      EB=FALSE)
-
-summary(test)
-z <- test$coefficients/test$SE.coefficients
-z
-##          (Intercept) sesmiddle seshigh  write
-## general        2.445   -1.2018  -2.261 -2.706
-## vocation       4.485    0.6117  -1.650 -5.113
-# 2-tailed z test
-p <- (1 - pnorm(abs(z), 0, 1)) * 2
-p
-round(p,2)
-#possibility of surface map-
-#CASP presence vs vegtation to account for spatial autocorrelation (some birds are same)
-
-
 #Figures
 
 ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
