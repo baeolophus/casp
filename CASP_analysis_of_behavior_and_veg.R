@@ -389,6 +389,12 @@ dev.off()
 ###Map of study sites (Figure 1)
 
 #Load ecoregions raster
+#create temporary raster files on large drive because they occupy 10-30 GB
+rasterOptions()$tmpdir
+rasterOptions(tmpdir=paste0(getwd(),
+                            "/CASP/rastertemp"))
+
+
 ecoregions <- raster(x = paste0(getwd(),
                                 "/CASP/Raster/ok_vegetation.img"))
 
@@ -421,7 +427,7 @@ types.m <-data.frame(matrix(data = types,
 colnames(types.m) <- c("ID",
                        "regionname",
                        "delete")
-types.m$ID <- as.factor(as.numeric(types.m$ID))
+types.m$ID <- as.numeric(types.m$ID)
 types.m$delete <- NULL
 
 
@@ -432,6 +438,7 @@ behavior.veg$study_region_values <- raster::extract(ecoregions,
 #Summarize using group_by to see what ecoregion each site is in
 #and if each site has more than one ecoregion.
 
+#Table 1
 ecoregion.summary.sites <- behavior.veg %>% 
   group_by(Location,
            study_region_values,
@@ -440,15 +447,18 @@ ecoregion.summary.sites <- behavior.veg %>%
   left_join(.,
             types.m,
             by = c("study_region_values"="ID"))%>%
+  select(Location, regionname, Response, points, ) %>%
+  arrange(Location, regionname, points) %>%
   print()
 
+#Sample sizes given in results
 sample.sizes <- behavior.veg %>% 
   group_by(Response) %>%
   summarize("points" = n())%>%
   print()
 
 
-#Plot GPS points from study on it?
+#Figure 1
 
 map <- extent(behavior.veg.ecoregion)
 small.eco <- crop(ecoregions,
