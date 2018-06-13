@@ -243,7 +243,7 @@ check.for.cor.both <-cor(  behavior.veg[,
 #Strongest reaction (as measured by distance of closest approach) by veg where present
 lm.distance.veg <- lmer(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
                           abovePC1 + abovePC2 + abovePC3 +
-                          belowPC1 + belowPC2 + belowPC3+abratio+(1|Location),
+                          belowPC1 + belowPC2 + belowPC3+(1|Location),
                         data = behavior.veg[behavior.veg$Response==1,])
 
 summary(lm.distance.veg)
@@ -253,7 +253,7 @@ summary(lm.distance.veg)
 
 glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
                             abovePC1 + abovePC2 + abovePC3 +
-                            belowPC1 + belowPC2 + belowPC3+ abratio+(1|Location),
+                            belowPC1 + belowPC2 + belowPC3+(1|Location),
                           data = behavior.veg,
                           family = "binomial")
 
@@ -263,10 +263,10 @@ summary(glm.presence.veg)
 loadings.pca.above.df <- data.frame(loadings.pca.above)
 loadings.pca.below.df <- data.frame(loadings.pca.below)
 
-
 abovepc1 <- t(loadings.pca.above.df[1,])
+abovepc3 <- t(loadings.pca.above.df[3,])
 belowpc1 <- t(loadings.pca.below.df[1,])
-loadings <- data.frame(cbind(abovepc1, belowpc1))
+loadings <- data.frame(cbind(abovepc1, belowpc1, abovepc3))
 
 ###FIGURES
 
@@ -285,12 +285,16 @@ ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "belowPC2" = mean(behavior.veg$belowPC2),
                     "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
+
+svg("CASP/Fig2.svg",
+    width = 7,
+    height = 5)
 par(mar=c(7,5,5,4))
 plot(Response ~ abovePC1,
      data = behavior.veg,
      xlab = "")
 mtext(
-  "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
+  "Tall shrubs/trees PC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
   decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
   side=1, line=4)
 lines(ndFig2$abovePC1,
@@ -298,8 +302,9 @@ lines(ndFig2$abovePC1,
               newdata=ndFig2,
               type="response",
               re.form = NA),
-      lty="solid",lwd=2)
-
+      lty="solid",
+      lwd=2)
+dev.off()
 
 #Figure 3, belowPC1
 ndFig3<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
@@ -316,32 +321,38 @@ ndFig3<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
 
 
-
+svg("CASP/Fig3.svg",
+    width = 7,
+    height = 5)
 par(mar=c(7,5,5,4))
 plot(Response ~ belowPC1,
      data = behavior.veg,
      xlab = "")
 mtext(
-  "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
+  "Short shrubs/trees PC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
   increasing sandplum (0.59), decreasing cholla (-0.38), and
   decreasing other shrub sp (-0.42)",
   side=1, line=5)
 lines(ndFig3$belowPC1,
       predict(glm.presence.veg,
-              newdata=ndFig2,
+              newdata=ndFig3,
               type="response",
               re.form = NA),
-      lty="solid",lwd=2)
-
+      lty="solid",
+      lwd=2)
+dev.off()
 
 
 #Figure 4, both PCA
+svg("CASP/Fig4.svg",
+    width = 7,
+    height = 7)
 par(mar=c(7,5,5,4))
 default.palette <- palette()
-palette()<- c("gray", "black")
+palette(c("gray", "black"))
 plot(abovePC1 ~ belowPC1,
      data = behavior.veg,
-     pch = as.factor(Location),
+     pch = as.numeric(as.factor(Location)),
      col = Response+1,
      bg = Response+1,
      xlab = "",
@@ -352,10 +363,27 @@ mtext(
   decreasing other shrub sp (-0.42)",
   side=1, line=5)
 mtext(
-  "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
+  "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59),
   decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
-  side=2, line=4)
-
+  side=2, line=2)
+legend("bottomright",
+       legend = c("Black Mesa State Park",
+                  "Cimarron Hills WMA",
+                  "Optima WMA plot 1",
+                  "Optima WMA plot 2",
+                  "Packsaddle WMA",
+                  "Rita Blanca WMA",
+                  "Selman Ranch",
+                  "Undefended point",
+                  "Defended point"),
+       pch = c(seq(1:7), 
+               1,
+               1),
+       col = c(rep(2, 7),
+               1,
+               2),
+       cex = 0.7)
+dev.off()
 
 
 ###Map of study sites (Figure 1)
