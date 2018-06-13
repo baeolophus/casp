@@ -4,6 +4,7 @@
 library(lme4)
 library(lmerTest)
 library(raster)
+library(rasterVis)
 library(tidyverse)
 
 ###Load data files
@@ -447,8 +448,8 @@ ecoregion.summary.sites <- behavior.veg %>%
   left_join(.,
             types.m,
             by = c("study_region_values"="ID"))%>%
-  select(Location, regionname, Response, points, ) %>%
-  arrange(Location, regionname, points) %>%
+  select(Location, regionname, Response, points) %>%
+  arrange(Location, regionname, Response) %>%
   print()
 
 #Sample sizes given in results
@@ -462,8 +463,41 @@ sample.sizes <- behavior.veg %>%
 
 map <- extent(behavior.veg.ecoregion)
 small.eco <- crop(ecoregions,
-                  map+3)
-plot(small.eco, 
-     xlab = "Longitude",
-     ylab = "Latitude")
-plot(behavior.veg.ecoregion, add = TRUE)
+                  map+1000)
+small.eco.f <- as.factor(small.eco)
+## Add a landcover column to the Raster Attribute Table
+rat <- levels(small.eco.f)[[1]]
+rat2 <- left_join(rat,
+                  types.m,
+                  by = c("ID"="ID"))
+rat[["landcover"]] <- rat2$regionname
+levels(small.eco.f) <- rat
+rat2$my_col <- rev(terrain.colors(n = nrow(rat2)))
+
+my_habitats <- left_join(ecoregion.summary.sites,
+                                 rat2,
+                                 by = c("study_region_values"="ID")) %>%
+  distinct(regionname.x, my_col)%>%
+  print()
+## Plot
+# levelplot(small.eco.f, 
+#           col.regions=rev(terrain.colors(nrow(rat2))),
+#           xlab="",
+#           ylab="")
+
+svg(file = "CASP/Fig1.svg",
+    height = 5, 
+    width = 8)
+
+plot(small.eco.f,
+     legend = FALSE, 
+     col = rat2$my_col)
+legend(x='bottomleft', 
+       legend = my_habitats$regionname.x, 
+       fill = my_habitats$my_col,
+       cex = 0.6,
+       ncol = 2)
+plot(behavior.veg.ecoregion, 
+     col = "black",
+     add = TRUE)
+dev.off()
