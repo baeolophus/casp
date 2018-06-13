@@ -22,10 +22,10 @@ CASP_behavior$Response[CASP_behavior$Strongest_behavior <= 2] <- 0
 CASP_behavior$Response[CASP_behavior$Strongest_behavior > 2] <- 1
 
 CASP_behavior <- unite(CASP_behavior,
-      Pointnames,
-      Transect, Point, 
-      sep = "", 
-      remove = TRUE)
+                       Pointnames,
+                       Transect, Point, 
+                       sep = "", 
+                       remove = TRUE)
 
 #Summarize daubenmire measurements
 
@@ -38,7 +38,7 @@ CASP_veg_daub_sum <- CASP_veg_daub %>%
             mLitter = mean(Litter),
             mOther = mean(OtherFromNotes),
             mSum = mean(Sum)
-            ) %>%
+  ) %>%
   filter(mSum >=95 & mSum<=105) #filtering out any more than 5% off
 
 behavior.veg1 <- left_join(CASP_behavior,
@@ -143,16 +143,16 @@ behavior.veg$daubPC3 <- pscores$PC3
 
 #counts of shrubs etc >1m tall
 veg.above <- c("above1.sumYucca",
-              "above1.sumSage",
-              "above1.sumSandplum",
-              "above1.sumCholla",
-              "above1.sumTree",
-              "above1.sumOther.shrub")
+               "above1.sumSage",
+               "above1.sumSandplum",
+               "above1.sumCholla",
+               "above1.sumTree",
+               "above1.sumOther.shrub")
 
 pca.veg.above <- prcomp(behavior.veg[,
-                                    veg.above],
-                       scale=TRUE, #correlation matrix used instead of covariance matrix, which is only appropriate if everything in same units.
-                       retx=TRUE) #required to get PC scores for each individual.
+                                     veg.above],
+                        scale=TRUE, #correlation matrix used instead of covariance matrix, which is only appropriate if everything in same units.
+                        retx=TRUE) #required to get PC scores for each individual.
 
 summary(pca.veg.above)
 (pca.eigenvalues.above<-pca.veg.above$sdev^2) #Get eigenvalues.
@@ -162,16 +162,16 @@ biplot(pca.veg.above)
 pca.veg.above$rotation #eigenvectors.  Again the signs are arbitrary so don't worry
 #if they differ but absolute values are the same between different programs or versions of R.
 (loadings.pca.above<-cor(pca.veg.above$x,
-                   behavior.veg[,
-                                veg.above],
-                   method="pearson"))
+                         behavior.veg[,
+                                      veg.above],
+                         method="pearson"))
 #Pearson's correlation of components with original variables.  Easier to interpret.
 #Eigenvectors are how you get PCs, so also a sort of weight, just harder to think about.
 
 check.for.cor.above <-cor(
-                         behavior.veg[,
-                                      veg.above],
-                         method="pearson")
+  behavior.veg[,
+               veg.above],
+  method="pearson")
 
 
 pscores.above<-data.frame(pca.veg.above$x) #puts PCA scores in a data frame
@@ -242,9 +242,9 @@ check.for.cor.both <-cor(  behavior.veg[,
 
 #Strongest reaction (as measured by distance of closest approach) by veg where present
 lm.distance.veg <- lmer(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
-                        abovePC1 + abovePC2 + abovePC3 +
+                          abovePC1 + abovePC2 + abovePC3 +
                           belowPC1 + belowPC2 + belowPC3+abratio+(1|Location),
-                      data = behavior.veg[behavior.veg$Response==1,])
+                        data = behavior.veg[behavior.veg$Response==1,])
 
 summary(lm.distance.veg)
 
@@ -252,43 +252,53 @@ summary(lm.distance.veg)
 #Presence/absence of defense by veg
 
 glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
-                          abovePC1 + abovePC2 + abovePC3 +
-                          belowPC1 + belowPC2 + belowPC3+ abratio+(1|Location),
-                      data = behavior.veg,
-                      family = "binomial")
+                            abovePC1 + abovePC2 + abovePC3 +
+                            belowPC1 + belowPC2 + belowPC3+ abratio+(1|Location),
+                          data = behavior.veg,
+                          family = "binomial")
 
 summary(glm.presence.veg)
 
+#Table 3 (loadings for pc axes that were significant)
+loadings.pca.above.df <- data.frame(loadings.pca.above)
+loadings.pca.below.df <- data.frame(loadings.pca.below)
+
+
+abovepc1 <- t(loadings.pca.above.df[1,])
+belowpc1 <- t(loadings.pca.below.df[1,])
+loadings <- data.frame(cbind(abovepc1, belowpc1))
 
 ###FIGURES
 
 #For manuscript, figures of the two significantly correlated PC axes.
 
-#Figure 2. abovePC3
+#Figure 2, abovePC1
 ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "daubPC2" = mean(behavior.veg$daubPC2),
                     "daubPC3" = mean(behavior.veg$daubPC3),
-                    "abovePC3"=seq(min(behavior.veg$abovePC3),
-                                max(behavior.veg$abovePC3),
-                                length.out=length(behavior.veg$abovePC3)),
+                    "abovePC1"= seq(min(behavior.veg$abovePC1),
+                                    max(behavior.veg$abovePC1),
+                                    length.out=length(behavior.veg$abovePC1)),
                     "abovePC2" = mean(behavior.veg$abovePC2),
-                    "abovePC1" = mean(behavior.veg$abovePC1),
+                    "abovePC3" = mean(behavior.veg$abovePC3),
                     "belowPC1" = mean(behavior.veg$belowPC1),
                     "belowPC2" = mean(behavior.veg$belowPC2),
                     "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
-
-
-lines(ndFig2$abovePC3,
+par(mar=c(7,5,5,4))
+plot(Response ~ abovePC1,
+     data = behavior.veg,
+     xlab = "")
+mtext(
+  "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
+  decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
+  side=1, line=4)
+lines(ndFig2$abovePC1,
       predict(glm.presence.veg,
-                  newdata=ndFig2,
-                  type="response",
+              newdata=ndFig2,
+              type="response",
               re.form = NA),
       lty="solid",lwd=2)
-
-plot(Response ~ abovePC3,
-     data = behavior.veg,
-     xlab = "AbovePC3: decreasing yucca (-0.76), increasing trees (0.53)")
 
 
 #Figure 3, belowPC1
@@ -312,10 +322,10 @@ plot(Response ~ belowPC1,
      data = behavior.veg,
      xlab = "")
 mtext(
-      "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
-     increasing sandplum (0.59), decreasing cholla (-0.38), and
-     decreasing other shrub sp (-0.42)",
-      side=1, line=5)
+  "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
+  increasing sandplum (0.59), decreasing cholla (-0.38), and
+  decreasing other shrub sp (-0.42)",
+  side=1, line=5)
 lines(ndFig3$belowPC1,
       predict(glm.presence.veg,
               newdata=ndFig2,
@@ -324,48 +334,29 @@ lines(ndFig3$belowPC1,
       lty="solid",lwd=2)
 
 
-#Figure not used in manuscript, but useful for interpretation for marginal PC
-ndnone<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
-                    "daubPC2" = mean(behavior.veg$daubPC2),
-                    "daubPC3" = mean(behavior.veg$daubPC3),
-                    "abovePC1"= seq(min(behavior.veg$abovePC1),
-                                    max(behavior.veg$abovePC1),
-                                    length.out=length(behavior.veg$abovePC1)),
-                    "abovePC2" = mean(behavior.veg$abovePC2),
-                    "abovePC3" = mean(behavior.veg$abovePC3),
-                    "belowPC1" = mean(behavior.veg$belowPC1),
-                    "belowPC2" = mean(behavior.veg$belowPC2),
-                    "belowPC3" = mean(behavior.veg$belowPC3))
-#plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
+
+#Figure 4, both PCA
 par(mar=c(7,5,5,4))
-plot(Response ~ abovePC1,
+default.palette <- palette()
+palette()<- c("gray", "black")
+plot(abovePC1 ~ belowPC1,
      data = behavior.veg,
-     xlab = "")
+     pch = as.factor(Location),
+     col = Response+1,
+     bg = Response+1,
+     xlab = "",
+     ylab = "")
+mtext(
+  "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
+  increasing sandplum (0.59), decreasing cholla (-0.38), and
+  decreasing other shrub sp (-0.42)",
+  side=1, line=5)
 mtext(
   "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
   decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
-  side=1, line=4)
-lines(ndnone$abovePC1,
-      predict(glm.presence.veg,
-              newdata=ndnone,
-              type="response",
-              re.form = NA),
-      lty="solid",lwd=2)
+  side=2, line=4)
 
-par(mar=c(7,5,5,4))
-plot(abovePC3~
-     belowPC1,
-     data = behavior.veg,
-     pch = as.numeric(as.factor(Location)),
-     bg = as.factor(Response),
-     col = as.factor(Response),
-     xlab = "",
-     ylab = "AbovePC3: decreasing yucca (-0.76), increasing trees (0.53)")
-mtext(
-  "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
-     increasing sandplum (0.59), decreasing cholla (-0.38), and
-  decreasing other shrub sp (-0.42)",
-  side=1, line=5)
+
 
 ###Map of study sites (Figure 1)
 
@@ -389,11 +380,6 @@ behavior.veg.ecoregion <- spTransform(behavior.veg.sp,
 crs(behavior.veg.ecoregion)
 
 #Assign metadata to raster
-library(EML)
-library(xml2)
-ecoregions.test <- read_xml(paste0(getwd(),
-                              "/CASP/Raster/oklahoma_vegetation_raster_metadata.xml"))
-ecoregions.test[[1]]
 library(XML)
 ecoregions.test <- xmlTreeParse(paste0(getwd(),
                                        "/CASP/Raster/oklahoma_vegetation_raster_metadata.xml"))
@@ -401,9 +387,9 @@ xml_data <- xmlToList(ecoregions.test)
 str(xml_data)
 types <- unlist(xml_data[[4]][[3]][[4]])
 types.m <-data.frame(matrix(data = types,
-                 ncol = 3,
-                 byrow = TRUE),
-                 stringsAsFactors = FALSE)
+                            ncol = 3,
+                            byrow = TRUE),
+                     stringsAsFactors = FALSE)
 colnames(types.m) <- c("ID",
                        "regionname",
                        "delete")
@@ -414,7 +400,7 @@ types.m$delete <- NULL
 #Extract ecoregion data from raster to study points.
 
 behavior.veg$study_region_values <- raster::extract(ecoregions,
-                                       behavior.veg.ecoregion)
+                                                    behavior.veg.ecoregion)
 #Summarize using group_by to see what ecoregion each site is in
 #and if each site has more than one ecoregion.
 
