@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+*.tif
+*.tiff
+*.aux.xml
+*.tif.aux.xml
+manuscript_files/
