@@ -5,10 +5,11 @@ library(lme4)
 library(lmerTest)
 library(raster)
 library(rasterVis)
+library(tidyr)
 library(tidyverse)
 
 ###Load data files
-CASP_behavior <- read.csv(file = "CASP/20170207_CASP_playback_responses_combined_longform.csv")
+CASP_behavior <- read.csv(file = "CASP/20190417_CASP_playback_responses_combined_longform_corrected_BMSP_GPS.csv")
 CASP_veg_daub <- read.csv(file = "CASP/combined_vegetation_percent_cover_CASP.csv")
 CASP_veg_sp   <- read.csv(file = "CASP/combined_vegetation_surveys_CASP.csv")
 
@@ -22,7 +23,7 @@ CASP_veg_sp$Pointnames <- CASP_veg_sp$Point
 CASP_behavior$Response[CASP_behavior$Strongest_behavior <= 2] <- 0
 CASP_behavior$Response[CASP_behavior$Strongest_behavior > 2] <- 1
 
-CASP_behavior <- unite(CASP_behavior,
+CASP_behavior <- tidyr::unite(CASP_behavior,
                        Pointnames,
                        Transect, Point, 
                        sep = "", 
@@ -448,7 +449,7 @@ ecoregion.summary.sites <- behavior.veg %>%
   left_join(.,
             types.m,
             by = c("study_region_values"="ID"))%>%
-  select(Location, regionname, Response, points) %>%
+  dplyr::select(Location, regionname, Response, points) %>%
   arrange(Location, regionname, Response) %>%
   print()
 
@@ -459,45 +460,111 @@ sample.sizes <- behavior.veg %>%
   print()
 
 
-#Figure 1
+# #Figure 1
+# 
+# map <- extent(behavior.veg.ecoregion)
+# small.eco <- crop(ecoregions,
+#                   map+1000)
+# small.eco.f <- as.factor(small.eco)
+# ## Add a landcover column to the Raster Attribute Table
+# rat <- levels(small.eco.f)[[1]]
+# rat2 <- left_join(rat,
+#                   types.m,
+#                   by = c("ID"="ID"))
+# rat[["landcover"]] <- rat2$regionname
+# levels(small.eco.f) <- rat
+# rat2$my_col <- rev(terrain.colors(n = nrow(rat2)))
+# 
+# my_habitats <- left_join(ecoregion.summary.sites,
+#                                  rat2,
+#                                  by = c("study_region_values"="ID")) %>%
+#   distinct(regionname.x, my_col)%>%
+#   print()
+# ## Plot
+# # levelplot(small.eco.f, 
+# #           col.regions=rev(terrain.colors(nrow(rat2))),
+# #           xlab="",
+# #           ylab="")
+# 
+# 
+# 
+# plot(small.eco.f,
+#      legend = FALSE, 
+#      col = rat2$my_col)
+# legend(x='bottomleft', 
+#        legend = my_habitats$regionname.x, 
+#        fill = my_habitats$my_col,
+#        cex = 0.6,
+#        ncol = 2)
+# plot(behavior.veg.ecoregion, 
+#      col = "black",
+#      add = TRUE)
 
-map <- extent(behavior.veg.ecoregion)
-small.eco <- crop(ecoregions,
-                  map+1000)
-small.eco.f <- as.factor(small.eco)
-## Add a landcover column to the Raster Attribute Table
-rat <- levels(small.eco.f)[[1]]
-rat2 <- left_join(rat,
-                  types.m,
-                  by = c("ID"="ID"))
-rat[["landcover"]] <- rat2$regionname
-levels(small.eco.f) <- rat
-rat2$my_col <- rev(terrain.colors(n = nrow(rat2)))
 
-my_habitats <- left_join(ecoregion.summary.sites,
-                                 rat2,
-                                 by = c("study_region_values"="ID")) %>%
-  distinct(regionname.x, my_col)%>%
-  print()
-## Plot
-# levelplot(small.eco.f, 
-#           col.regions=rev(terrain.colors(nrow(rat2))),
-#           xlab="",
-#           ylab="")
+#New Fig. 1 without raster but with site labels
+# https://gis.stackexchange.com/questions/222799/create-an-inset-map-in-r 
 
+library(maps)
+library(GISTools)  
+detach("package:tidyverse", unload=TRUE) #interferes with something in maps
+
+
+dev.off() #reset par
 svg(file = "CASP/Fig1.svg",
     height = 5, 
     width = 8)
 
-plot(small.eco.f,
-     legend = FALSE, 
-     col = rat2$my_col)
-legend(x='bottomleft', 
-       legend = my_habitats$regionname.x, 
-       fill = my_habitats$my_col,
-       cex = 0.6,
-       ncol = 2)
-plot(behavior.veg.ecoregion, 
-     col = "black",
-     add = TRUE)
+maps::map(database = 'state',
+          regions = c('oklahoma'),
+    fill = TRUE,
+    col = "gray",
+    mar=c(5,8,4,2)+0.1) # https://stackoverflow.com/questions/44806661/preventing-the-y-axis-label-being-chopped-off-by-r-maps
+map.axes(cex.axis=0.8)
+title(x = "Longitude", 
+      y = "Latitude")
+points(y = behavior.veg$Longitude,
+       x = behavior.veg$Latitude,
+       pch = as.numeric(as.factor(behavior.veg$Location)))
+
+maps::map.scale(x=-102.75, y=34.2, 
+                ratio=FALSE,
+                relwidth=0.2)
+north.arrow(xb=-101.5,
+            yb=35,
+            len=0.1,
+            lab="N") 
+
+# Inmap
+par(usr=c(-300, -63, 22, 144))
+rect(xleft =-126.2,
+     ybottom = 23.8,
+     xright = -65.5,
+     ytop = 50.6,
+     col = "white")
+map("usa", 
+    xlim=c(-126.2,-65.5),
+    ylim=c(23.8,50.6),add=T)
+map("state", 
+    xlim=c(-126.2,-65.5),
+    ylim=c(23.8,50.6),add=T,
+    boundary = F,
+    interior = T,
+    lty=1)
+map("state", 
+    region="oklahoma",
+    fill=T, 
+    add=T,
+    col = "gray")
+legend("topright",
+       legend = c("Black Mesa State Park",
+                  "Cimarron Hills WMA",
+                  "Optima WMA plot 1",
+                  "Optima WMA plot 2",
+                  "Packsaddle WMA",
+                  "Rita Blanca WMA",
+                  "Selman Ranch"),
+       pch = c(seq(1:7), 
+               1,
+               1),
+       cex = 0.7)
 dev.off()
