@@ -9,9 +9,9 @@ library(tidyr)
 library(tidyverse)
 
 ###Load data files
-CASP_behavior <- read.csv(file = "CASP/20190417_CASP_playback_responses_combined_longform_corrected_BMSP_GPS.csv")
-CASP_veg_daub <- read.csv(file = "CASP/combined_vegetation_percent_cover_CASP.csv")
-CASP_veg_sp   <- read.csv(file = "CASP/combined_vegetation_surveys_CASP.csv")
+CASP_behavior <- read.csv(file = "20190417_CASP_playback_responses_combined_longform_corrected_BMSP_GPS.csv")
+CASP_veg_daub <- read.csv(file = "combined_vegetation_percent_cover_CASP.csv")
+CASP_veg_sp   <- read.csv(file = "combined_vegetation_surveys_CASP.csv")
 
 ###Taking raw data to summarized formats
 
@@ -250,6 +250,12 @@ lm.distance.veg <- lmer(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
 
 summary(lm.distance.veg)
 
+lm.distance.veg.no_RE <- lm(ClosestDistance ~ daubPC1 + daubPC2 + daubPC3 +
+                          abovePC1 + abovePC2 + abovePC3 +
+                          belowPC1 + belowPC2 + belowPC3,
+                        data = behavior.veg[behavior.veg$Response==1,])
+
+summary(lm.distance.veg.no_RE)
 
 #Presence/absence of defense by veg
 
@@ -260,6 +266,14 @@ glm.presence.veg <- glmer(Response ~ daubPC1 + daubPC2 + daubPC3 +
                           family = "binomial")
 
 summary(glm.presence.veg)
+
+glm.presence.veg.no_RE <- glm(Response ~ daubPC1 + daubPC2 + daubPC3 +
+                            abovePC1 + abovePC2 + abovePC3 +
+                            belowPC1 + belowPC2 + belowPC3,
+                          data = behavior.veg,
+                          family = "binomial")
+
+summary(glm.presence.veg.no_RE)
 
 #Table 3 (loadings for pc axes that were significant)
 loadings.pca.above.df <- data.frame(loadings.pca.above)
@@ -288,23 +302,34 @@ ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
 
+glm_predict <- predict(glm.presence.veg.no_RE,
+        newdata=ndFig2,
+        type="response",
+        se.fit = TRUE)
+
 svg("CASP/Fig2.svg",
     width = 7,
     height = 5)
 par(mar=c(7,5,5,4))
 plot(Response ~ abovePC1,
      data = behavior.veg,
-     xlab = "")
+     xlab = "",
+     ylab = "Presence of agonistic behavior in response to playback")
 mtext(
   "Tall shrubs/trees PC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
   decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
   side=1, line=4)
 lines(ndFig2$abovePC1,
-      predict(glm.presence.veg,
-              newdata=ndFig2,
-              type="response",
-              re.form = NA),
+      glm_predict[[1]],
       lty="solid",
+      lwd=2)
+lines(ndFig2$abovePC1,
+      glm_predict[[1]] + glm_predict[[2]],
+      lty="dotted",
+      lwd=2)
+lines(ndFig2$abovePC1,
+      glm_predict[[1]] - glm_predict[[2]],
+      lty="dotted",
       lwd=2)
 dev.off()
 
@@ -321,7 +346,10 @@ ndFig3<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "belowPC2" = mean(behavior.veg$belowPC2),
                     "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
-
+fig3_predict <- predict(glm.presence.veg.no_RE,
+        newdata=ndFig3,
+        type="response",
+        se.fit = TRUE)
 
 svg("CASP/Fig3.svg",
     width = 7,
@@ -329,19 +357,26 @@ svg("CASP/Fig3.svg",
 par(mar=c(7,5,5,4))
 plot(Response ~ belowPC1,
      data = behavior.veg,
-     xlab = "")
+     xlab = "",
+     ylab = "Presence of agonistic behavior in response to playback")
 mtext(
   "Short shrubs/trees PC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
   increasing sandplum (0.59), decreasing cholla (-0.38), and
   decreasing other shrub sp (-0.42)",
   side=1, line=5)
-lines(ndFig3$belowPC1,
-      predict(glm.presence.veg,
-              newdata=ndFig3,
-              type="response",
-              re.form = NA),
+lines(x = ndFig3$belowPC1,
+      y = fig3_predict[[1]],
       lty="solid",
       lwd=2)
+lines(x = ndFig3$belowPC1,
+      y = fig3_predict[[1]] + fig3_predict[[2]],
+      lty="dotted",
+      lwd=2)
+lines(x = ndFig3$belowPC1,
+      y = fig3_predict[[1]] - fig3_predict[[2]],
+      lty="dotted",
+      lwd=2)
+
 dev.off()
 
 
@@ -389,69 +424,69 @@ dev.off()
 
 
 ###Map of study sites (Figure 1)
-
-#Load ecoregions raster
-#create temporary raster files on large drive because they occupy 10-30 GB
-rasterOptions()$tmpdir
-rasterOptions(tmpdir=paste0(getwd(),
-                            "/CASP/rastertemp"))
-
-
-ecoregions <- raster(x = paste0(getwd(),
-                                "/CASP/Raster/ok_vegetation.img"))
-
-#check CRS
-crs(ecoregions)
-
-#Add spatial data to points and transform (quicker than transforming whole raster)
-behavior.veg$lon <- behavior.veg$Longitude
-behavior.veg$lat <- behavior.veg$Latitude
-behavior.veg.sp <- behavior.veg
-coordinates(behavior.veg.sp) <- c("lat", 
-                                  "lon") #They are named backwards... lat is actually longitude and vice versa.
-proj4string(behavior.veg.sp) <- CRS("+init=epsg:4326 +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
-summary(behavior.veg.sp)
-behavior.veg.ecoregion <- spTransform(behavior.veg.sp,
-                                      crs(ecoregions))
-crs(behavior.veg.ecoregion)
-
-#Assign metadata to raster
-library(XML)
-ecoregions.test <- xmlTreeParse(paste0(getwd(),
-                                       "/CASP/Raster/oklahoma_vegetation_raster_metadata.xml"))
-xml_data <- xmlToList(ecoregions.test)
-str(xml_data)
-types <- unlist(xml_data[[4]][[3]][[4]])
-types.m <-data.frame(matrix(data = types,
-                            ncol = 3,
-                            byrow = TRUE),
-                     stringsAsFactors = FALSE)
-colnames(types.m) <- c("ID",
-                       "regionname",
-                       "delete")
-types.m$ID <- as.numeric(types.m$ID)
-types.m$delete <- NULL
-
-
-#Extract ecoregion data from raster to study points.
-
-behavior.veg$study_region_values <- raster::extract(ecoregions,
-                                                    behavior.veg.ecoregion)
-#Summarize using group_by to see what ecoregion each site is in
-#and if each site has more than one ecoregion.
-
-#Table 1
-ecoregion.summary.sites <- behavior.veg %>% 
-  group_by(Location,
-           study_region_values,
-           Response) %>%
-  summarize("points" = n())%>%
-  left_join(.,
-            types.m,
-            by = c("study_region_values"="ID"))%>%
-  dplyr::select(Location, regionname, Response, points) %>%
-  arrange(Location, regionname, Response) %>%
-  print()
+# 
+# #Load ecoregions raster
+# #create temporary raster files on large drive because they occupy 10-30 GB
+# rasterOptions()$tmpdir
+# rasterOptions(tmpdir=paste0(getwd(),
+#                             "/CASP/rastertemp"))
+# 
+# 
+# ecoregions <- raster(x = paste0(getwd(),
+#                                 "/CASP/Raster/ok_vegetation.img"))
+# 
+# #check CRS
+# crs(ecoregions)
+# 
+# #Add spatial data to points and transform (quicker than transforming whole raster)
+# behavior.veg$lon <- behavior.veg$Longitude
+# behavior.veg$lat <- behavior.veg$Latitude
+# behavior.veg.sp <- behavior.veg
+# coordinates(behavior.veg.sp) <- c("lat", 
+#                                   "lon") #They are named backwards... lat is actually longitude and vice versa.
+# proj4string(behavior.veg.sp) <- CRS("+init=epsg:4326 +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
+# summary(behavior.veg.sp)
+# behavior.veg.ecoregion <- spTransform(behavior.veg.sp,
+#                                       crs(ecoregions))
+# crs(behavior.veg.ecoregion)
+# 
+# #Assign metadata to raster
+# library(XML)
+# ecoregions.test <- xmlTreeParse(paste0(getwd(),
+#                                        "/CASP/Raster/oklahoma_vegetation_raster_metadata.xml"))
+# xml_data <- xmlToList(ecoregions.test)
+# str(xml_data)
+# types <- unlist(xml_data[[4]][[3]][[4]])
+# types.m <-data.frame(matrix(data = types,
+#                             ncol = 3,
+#                             byrow = TRUE),
+#                      stringsAsFactors = FALSE)
+# colnames(types.m) <- c("ID",
+#                        "regionname",
+#                        "delete")
+# types.m$ID <- as.numeric(types.m$ID)
+# types.m$delete <- NULL
+# 
+# 
+# #Extract ecoregion data from raster to study points.
+# 
+# behavior.veg$study_region_values <- raster::extract(ecoregions,
+#                                                     behavior.veg.ecoregion)
+# #Summarize using group_by to see what ecoregion each site is in
+# #and if each site has more than one ecoregion.
+# 
+# #Table 1
+# ecoregion.summary.sites <- behavior.veg %>% 
+#   group_by(Location,
+#            study_region_values,
+#            Response) %>%
+#   summarize("points" = n())%>%
+#   left_join(.,
+#             types.m,
+#             by = c("study_region_values"="ID"))%>%
+#   dplyr::select(Location, regionname, Response, points) %>%
+#   arrange(Location, regionname, Response) %>%
+#   print()
 
 #Sample sizes given in results
 sample.sizes <- behavior.veg %>% 
@@ -558,8 +593,8 @@ map("state",
 legend("topright",
        legend = c("Black Mesa State Park",
                   "Cimarron Hills WMA",
-                  "Optima WMA plot 1",
-                  "Optima WMA plot 2",
+                  "Optima WMA Location 1",
+                  "Optima WMA Location 2",
                   "Packsaddle WMA",
                   "Rita Blanca WMA",
                   "Selman Ranch"),
