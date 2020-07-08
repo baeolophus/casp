@@ -3,8 +3,8 @@
 ###Load libraries
 library(lme4)
 library(lmerTest)
-library(raster)
-library(rasterVis)
+#library(raster)
+#library(rasterVis)
 library(tidyr)
 library(tidyverse)
 
@@ -302,12 +302,12 @@ ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
 
-glm_predict <- predict(glm.presence.veg.no_RE,
+fig2_predict <- predict(glm.presence.veg.no_RE,
         newdata=ndFig2,
         type="response",
         se.fit = TRUE)
 
-svg("CASP/Fig2.svg",
+svg("Fig2.svg",
     width = 7,
     height = 5)
 par(mar=c(7,5,5,4))
@@ -320,15 +320,15 @@ mtext(
   decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
   side=1, line=4)
 lines(ndFig2$abovePC1,
-      glm_predict[[1]],
+      fig2_predict[[1]],
       lty="solid",
       lwd=2)
 lines(ndFig2$abovePC1,
-      glm_predict[[1]] + glm_predict[[2]],
+      fig2_predict[[1]] + fig2_predict[[2]],
       lty="dotted",
       lwd=2)
 lines(ndFig2$abovePC1,
-      glm_predict[[1]] - glm_predict[[2]],
+      fig2_predict[[1]] - fig2_predict[[2]],
       lty="dotted",
       lwd=2)
 dev.off()
@@ -351,7 +351,7 @@ fig3_predict <- predict(glm.presence.veg.no_RE,
         type="response",
         se.fit = TRUE)
 
-svg("CASP/Fig3.svg",
+svg("Fig3.svg",
     width = 7,
     height = 5)
 par(mar=c(7,5,5,4))
@@ -381,7 +381,7 @@ dev.off()
 
 
 #Figure 4, both PCA
-svg("CASP/Fig4.svg",
+svg("Fig4.svg",
     width = 7,
     height = 7)
 par(mar=c(7,5,5,4))
@@ -406,8 +406,8 @@ mtext(
 legend("bottomright",
        legend = c("Black Mesa State Park",
                   "Cimarron Hills WMA",
-                  "Optima WMA plot 1",
-                  "Optima WMA plot 2",
+                  "Optima WMA Location 1",
+                  "Optima WMA Location 2",
                   "Packsaddle WMA",
                   "Rita Blanca WMA",
                   "Selman Ranch",
@@ -538,14 +538,15 @@ sample.sizes <- behavior.veg %>%
 
 #New Fig. 1 without raster but with site labels
 # https://gis.stackexchange.com/questions/222799/create-an-inset-map-in-r 
+tidyverse <- "package:tidyverse"
+detach(tidyverse, unload=TRUE, character.only = TRUE) #interferes with something in maps
 
 library(maps)
 library(GISTools)  
-detach("package:tidyverse", unload=TRUE) #interferes with something in maps
 
 
 dev.off() #reset par
-svg(file = "CASP/Fig1.svg",
+svg(file = "Fig1.svg",
     height = 5, 
     width = 8)
 
@@ -576,16 +577,16 @@ rect(xleft =-126.2,
      xright = -65.5,
      ytop = 50.6,
      col = "white")
-map("usa", 
+maps::map("usa", 
     xlim=c(-126.2,-65.5),
     ylim=c(23.8,50.6),add=T)
-map("state", 
+maps::map("state", 
     xlim=c(-126.2,-65.5),
     ylim=c(23.8,50.6),add=T,
     boundary = F,
     interior = T,
     lty=1)
-map("state", 
+maps::map("state", 
     region="oklahoma",
     fill=T, 
     add=T,
