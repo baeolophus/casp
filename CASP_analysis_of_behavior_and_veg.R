@@ -65,9 +65,7 @@ CASP_veg_sp_sum <- CASP_veg_sp %>%
                               na.rm = TRUE),
             sumCholla = sum(Cholla,
                             na.rm = TRUE),
-            sumTree = sum(Tree,
-                          na.rm = TRUE),
-            sumOther.shrub = sum(Other.shrub,
+            sumOtherWoody = sum(Other.shrub + Tree,
                                  na.rm = TRUE),
             sumCounts = sum(Sum.counts,
                             na.rm = TRUE)
@@ -148,8 +146,7 @@ veg.above <- c("above1.sumYucca",
                "above1.sumSage",
                "above1.sumSandplum",
                "above1.sumCholla",
-               "above1.sumTree",
-               "above1.sumOther.shrub")
+               "above1.sumOtherWoody")
 
 pca.veg.above <- prcomp(behavior.veg[,
                                      veg.above],
@@ -189,8 +186,7 @@ veg.below <- c("below1.sumYucca",
                "below1.sumSage",
                "below1.sumSandplum",
                "below1.sumCholla",
-               "below1.sumTree",
-               "below1.sumOther.shrub")
+               "below1.sumOtherWoody")
 
 pca.veg.below <- prcomp(behavior.veg[,
                                      veg.below],
@@ -288,53 +284,53 @@ loadings <- data.frame(cbind(abovepc1, belowpc1, abovepc3))
 
 #For manuscript, figures of the two significantly correlated PC axes.
 
-#Figure 2, abovePC1
+# #Figure 2, abovePC1
+# ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
+#                     "daubPC2" = mean(behavior.veg$daubPC2),
+#                     "daubPC3" = mean(behavior.veg$daubPC3),
+#                     "abovePC1"= seq(min(behavior.veg$abovePC1),
+#                                     max(behavior.veg$abovePC1),
+#                                     length.out=length(behavior.veg$abovePC1)),
+#                     "abovePC2" = mean(behavior.veg$abovePC2),
+#                     "abovePC3" = mean(behavior.veg$abovePC3),
+#                     "belowPC1" = mean(behavior.veg$belowPC1),
+#                     "belowPC2" = mean(behavior.veg$belowPC2),
+#                     "belowPC3" = mean(behavior.veg$belowPC3))
+# #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
+# 
+# fig2_predict <- predict(glm.presence.veg.no_RE,
+#         newdata=ndFig2,
+#         type="response",
+#         se.fit = TRUE)
+# 
+# svg("Fig2.svg",
+#     width = 7,
+#     height = 5)
+# par(mar=c(7,5,5,4))
+# plot(Response ~ abovePC1,
+#      data = behavior.veg,
+#      xlab = "",
+#      ylab = "Presence of agonistic behavior in response to playback")
+# mtext(
+#   "Tall woody vegetation PC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
+#   decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
+#   side=1, line=4)
+# lines(ndFig2$abovePC1,
+#       fig2_predict[[1]],
+#       lty="solid",
+#       lwd=2)
+# lines(ndFig2$abovePC1,
+#       fig2_predict[[1]] + fig2_predict[[2]],
+#       lty="dotted",
+#       lwd=2)
+# lines(ndFig2$abovePC1,
+#       fig2_predict[[1]] - fig2_predict[[2]],
+#       lty="dotted",
+#       lwd=2)
+# dev.off()
+
+#Figure 2, belowPC1
 ndFig2<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
-                    "daubPC2" = mean(behavior.veg$daubPC2),
-                    "daubPC3" = mean(behavior.veg$daubPC3),
-                    "abovePC1"= seq(min(behavior.veg$abovePC1),
-                                    max(behavior.veg$abovePC1),
-                                    length.out=length(behavior.veg$abovePC1)),
-                    "abovePC2" = mean(behavior.veg$abovePC2),
-                    "abovePC3" = mean(behavior.veg$abovePC3),
-                    "belowPC1" = mean(behavior.veg$belowPC1),
-                    "belowPC2" = mean(behavior.veg$belowPC2),
-                    "belowPC3" = mean(behavior.veg$belowPC3))
-#plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
-
-fig2_predict <- predict(glm.presence.veg.no_RE,
-        newdata=ndFig2,
-        type="response",
-        se.fit = TRUE)
-
-svg("Fig2.svg",
-    width = 7,
-    height = 5)
-par(mar=c(7,5,5,4))
-plot(Response ~ abovePC1,
-     data = behavior.veg,
-     xlab = "",
-     ylab = "Presence of agonistic behavior in response to playback")
-mtext(
-  "Tall shrubs/trees PC1: increasing sagebrush (0.65), increasing sandplum (0.59), 
-  decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
-  side=1, line=4)
-lines(ndFig2$abovePC1,
-      fig2_predict[[1]],
-      lty="solid",
-      lwd=2)
-lines(ndFig2$abovePC1,
-      fig2_predict[[1]] + fig2_predict[[2]],
-      lty="dotted",
-      lwd=2)
-lines(ndFig2$abovePC1,
-      fig2_predict[[1]] - fig2_predict[[2]],
-      lty="dotted",
-      lwd=2)
-dev.off()
-
-#Figure 3, belowPC1
-ndFig3<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "daubPC2" = mean(behavior.veg$daubPC2),
                     "daubPC3" = mean(behavior.veg$daubPC3),
                     "abovePC1"= mean(behavior.veg$abovePC1),
@@ -346,12 +342,12 @@ ndFig3<- data.frame("daubPC1" = mean(behavior.veg$daubPC1),
                     "belowPC2" = mean(behavior.veg$belowPC2),
                     "belowPC3" = mean(behavior.veg$belowPC3))
 #plot the prediction with the new data (otherwise it uses rownumber and stretches the line out uselessly).
-fig3_predict <- predict(glm.presence.veg.no_RE,
-        newdata=ndFig3,
+fig2_predict <- predict(glm.presence.veg.no_RE,
+        newdata=ndFig2,
         type="response",
         se.fit = TRUE)
 
-svg("Fig3.svg",
+svg("Fig2.svg",
     width = 7,
     height = 5)
 par(mar=c(7,5,5,4))
@@ -360,68 +356,68 @@ plot(Response ~ belowPC1,
      xlab = "",
      ylab = "Presence of agonistic behavior in response to playback")
 mtext(
-  "Short shrubs/trees PC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
-  increasing sandplum (0.59), decreasing cholla (-0.38), and
-  decreasing other shrub sp (-0.42)",
+  "Short woody vegetation PC1: decreasing yucca (-0.37), increasing sagebrush (0.73),
+  increasing sandplum (0.60), decreasing cholla (-0.37), and
+  decreasing other woody vegetation sp (-0.43)",
   side=1, line=5)
-lines(x = ndFig3$belowPC1,
-      y = fig3_predict[[1]],
+lines(x = ndFig2$belowPC1,
+      y = fig2_predict[[1]],
       lty="solid",
       lwd=2)
-lines(x = ndFig3$belowPC1,
-      y = fig3_predict[[1]] + fig3_predict[[2]],
+lines(x = ndFig2$belowPC1,
+      y = fig2_predict[[1]] + fig2_predict[[2]],
       lty="dotted",
       lwd=2)
-lines(x = ndFig3$belowPC1,
-      y = fig3_predict[[1]] - fig3_predict[[2]],
+lines(x = ndFig2$belowPC1,
+      y = fig2_predict[[1]] - fig2_predict[[2]],
       lty="dotted",
       lwd=2)
 
 dev.off()
 
-
-#Figure 4, both PCA
-svg("Fig4.svg",
-    width = 7,
-    height = 7)
-par(mar=c(7,5,5,4))
-default.palette <- palette()
-palette(c("gray", "black"))
-plot(abovePC1 ~ belowPC1,
-     data = behavior.veg,
-     pch = as.numeric(as.factor(Location)),
-     col = Response+1,
-     bg = Response+1,
-     xlab = "",
-     ylab = "")
-mtext(
-  "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
-  increasing sandplum (0.59), decreasing cholla (-0.38), and
-  decreasing other shrub sp (-0.42)",
-  side=1, line=5)
-mtext(
-  "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59),
-  decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
-  side=2, line=2)
-legend("bottomright",
-       legend = c("Black Mesa State Park",
-                  "Cimarron Hills WMA",
-                  "Optima WMA Location 1",
-                  "Optima WMA Location 2",
-                  "Packsaddle WMA",
-                  "Rita Blanca WMA",
-                  "Selman Ranch",
-                  "Undefended point",
-                  "Defended point"),
-       pch = c(seq(1:7), 
-               1,
-               1),
-       col = c(rep(2, 7),
-               1,
-               2),
-       cex = 0.7)
-dev.off()
-
+# 
+# #Figure 4, both PCA
+# svg("Fig4.svg",
+#     width = 7,
+#     height = 7)
+# par(mar=c(7,5,5,4))
+# default.palette <- palette()
+# palette(c("gray", "black"))
+# plot(abovePC1 ~ belowPC1,
+#      data = behavior.veg,
+#      pch = as.numeric(as.factor(Location)),
+#      col = Response+1,
+#      bg = Response+1,
+#      xlab = "",
+#      ylab = "")
+# mtext(
+#   "BelowPC1: decreasing yucca (-0.38), increasing sagebrush (0.73),
+#   increasing sandplum (0.59), decreasing cholla (-0.38), and
+#   decreasing other shrub sp (-0.42)",
+#   side=1, line=5)
+# mtext(
+#   "abovePC1: increasing sagebrush (0.65), increasing sandplum (0.59),
+#   decreasing cholla (-0.44), and decreasing other shrubs (-0.56)",
+#   side=2, line=2)
+# legend("bottomright",
+#        legend = c("Black Mesa State Park",
+#                   "Cimarron Hills WMA",
+#                   "Optima WMA Location 1",
+#                   "Optima WMA Location 2",
+#                   "Packsaddle WMA",
+#                   "Rita Blanca WMA",
+#                   "Selman Ranch",
+#                   "Undefended point",
+#                   "Defended point"),
+#        pch = c(seq(1:7), 
+#                1,
+#                1),
+#        col = c(rep(2, 7),
+#                1,
+#                2),
+#        cex = 0.7)
+# dev.off()
+# 
 
 ###Map of study sites (Figure 1)
 # 
